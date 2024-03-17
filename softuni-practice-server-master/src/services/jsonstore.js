@@ -3,8 +3,8 @@ const Service = require('./Service');
 const uuid = require('../common/util').uuid;
 
 
-const data = fs.existsSync('../data') ? fs.readdirSync('../data').reduce((p, c) => {
-    const content = JSON.parse(fs.readFileSync('../data/' + c));
+const data = fs.existsSync('./data') ? fs.readdirSync('./data').reduce((p, c) => {
+    const content = JSON.parse(fs.readFileSync('./data/' + c));
     const collection = c.slice(0, -5);
     p[collection] = {};
     for (let endpoint in content) {
