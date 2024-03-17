@@ -7,7 +7,7 @@ const app = express();
 const port = process.env.PORT || 3030;
 
 // Connect to MongoDB
-mongoose.connect('mongodb://localhost:27017/Angular-Project.booking', {
+mongoose.connect('mongodb://localhost:27017/Angular-Project', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
