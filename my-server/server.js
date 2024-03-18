@@ -28,12 +28,22 @@ const User = mongoose.model("User", userSchema);
 // Define booking schema
 const bookingSchema = new mongoose.Schema({
   // Define properties of a booking record
-  // For example:
   userId: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
   date: Date,
   location: {
     country: String,
     city: String,
+  },
+  photos: [String],
+  description: String,
+  highlights: [String],
+  price: Number,
+  options: {
+    wifi: Boolean,
+    parking: Boolean,
+    breakfast: Boolean,
+    pets: Boolean,
+    smoking: Boolean,
   },
 
   // Add more properties as needed
@@ -89,8 +99,13 @@ app.post("/api/bookings", async (req, res) => {
     const booking = new Booking({
       userId: req.body.userId,
       date: req.body.date,
-      location: req.body.location, // Make sure this is set correctly
-      // Other properties as needed
+      location: req.body.location,
+      photos: req.body.photos,
+      description: req.body.description,
+      highlights: req.body.highlights,
+      price: req.body.price,
+      options: req.body.options,
+      // Add more properties as needed
     });
 
     // Save the booking record to the database
@@ -114,6 +129,15 @@ app.get("/api/bookings", async (req, res) => {
     res.status(200).json(bookings);
   } catch (error) {
     // Handle any errors
+    res.status(500).json({ error: error.message });
+  }
+});
+// Get 5 most recent bookings
+app.get("/api/bookings/recent", async (req, res) => {
+  try {
+    const recentThemes = await Booking.find().sort({ createdAt: -1 }).limit(5);
+    res.status(200).json(recentBookings);
+  } catch (error) {
     res.status(500).json({ error: error.message });
   }
 });
