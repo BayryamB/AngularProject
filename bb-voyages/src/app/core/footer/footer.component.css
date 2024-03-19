@@ -2,7 +2,7 @@ footer {
     background-image: url('../../../assets/footer-bg.png');
     background-size: cover; /* Adjusts the size of the background image */
     background-position: center; /* Positions the background image at the center */
-    padding: 50px; /* Add padding as needed */
+    padding: 50px;
     color: rgb(221, 221, 221); /* Set text color */
     font-family: 'Helvetica', sans-serif; 
     height: 350px;

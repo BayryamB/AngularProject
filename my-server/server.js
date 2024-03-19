@@ -2,7 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-
+const cors = require("cors");
 const app = express();
 const port = process.env.PORT || 3030;
 
@@ -17,6 +17,13 @@ db.on("error", console.error.bind(console, "MongoDB connection error:"));
 db.once("open", function () {
   console.log("Connected to MongoDB");
 });
+
+app.use(cors());
+app.use(
+  cors({
+    origin: "http://localhost:4200", // Allow requests from this origin
+  })
+);
 
 // Define User schema
 const userSchema = new mongoose.Schema({
@@ -135,7 +142,7 @@ app.get("/api/bookings", async (req, res) => {
 // Get 5 most recent bookings
 app.get("/api/bookings/recent", async (req, res) => {
   try {
-    const recentThemes = await Booking.find().sort({ createdAt: -1 }).limit(5);
+    const recentThemes = await Booking.find().sort({ createdAt: -1 }).limit(3);
     res.status(200).json(recentBookings);
   } catch (error) {
     res.status(500).json({ error: error.message });

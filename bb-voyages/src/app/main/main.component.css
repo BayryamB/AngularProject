@@ -1,0 +1,11 @@
+.content {
+    display: flex;
+    justify-content: space-between;
+    gap: 1em;
+}
+
+.fixed-size {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 50px;
+}
