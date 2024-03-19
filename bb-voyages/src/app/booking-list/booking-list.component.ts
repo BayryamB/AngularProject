@@ -9,11 +9,18 @@ import { Announcement } from '../types/announcment';
 })
 export class BookingListComponent implements OnInit {
   announcements: Announcement[] = [];
+  actual: Announcement[] = [];
   constructor(private api: ApiService) {}
   ngOnInit(): void {
     this.api.getBookings().subscribe((announcements) => {
       this.announcements = announcements;
-      console.log(this.announcements);
+      if (this.announcements.length <= 4) {
+        this.actual = this.announcements;
+      } else if (this.announcements.length <= 8) {
+        this.actual = this.announcements.slice(0, 4);
+      } else {
+        this.actual = this.announcements.slice(0, 8);
+      }
     });
   }
 }

@@ -5,6 +5,7 @@ export interface Announcement {
   userId: string;
   date: string;
   photos: string[];
+  cover: string;
   description: string;
   highlights: string[];
   price: number;

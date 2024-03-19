@@ -139,7 +139,7 @@ app.get("/api/bookings", async (req, res) => {
 // Get 5 most recent bookings
 app.get("/api/bookings/recent", async (req, res) => {
   try {
-    const recentThemes = await Booking.find().sort({ createdAt: -1 }).limit(3);
+    const recentThemes = await Booking.find().sort({ createdAt: -1 }).limit(4);
     res.status(200).json(recentBookings);
   } catch (error) {
     res.status(500).json({ error: error.message });
