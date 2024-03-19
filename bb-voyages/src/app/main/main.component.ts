@@ -9,7 +9,5 @@ import { ApiService } from '../api.service';
 export class MainComponent implements OnInit {
   constructor(private apiService: ApiService) {}
 
-  ngOnInit(): void {
-    this.apiService.getBookings().subscribe((data) => console.log(data));
-  }
+  ngOnInit(): void {}
 }

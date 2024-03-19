@@ -11,7 +11,6 @@ export class ApiService {
 
   getBookings() {
     const { apiUrl } = environment;
-
     return this.http.get<Announcement[]>(`${apiUrl}/bookings`);
   }
 }
