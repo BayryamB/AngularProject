@@ -19,11 +19,6 @@ db.once("open", function () {
 });
 
 app.use(cors());
-app.use(
-  cors({
-    origin: "http://localhost:4200", // Allow requests from this origin
-  })
-);
 
 // Define User schema
 const userSchema = new mongoose.Schema({

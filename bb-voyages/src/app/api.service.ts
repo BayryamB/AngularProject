@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment.development';
+import { Announcement } from './types/announcment';
 
 @Injectable({
   providedIn: 'root',
@@ -11,6 +12,6 @@ export class ApiService {
   getBookings() {
     const { apiUrl } = environment;
 
-    return this.http.get<any>(`http://localhost:3030/api/bookings`);
+    return this.http.get<Announcement[]>(`${apiUrl}/bookings`);
   }
 }
