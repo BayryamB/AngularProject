@@ -2,8 +2,8 @@
     <div *ngIf="!isLoaded" class="loader">
         <app-loader></app-loader>
     </div>
-    <div class="video">
-        <video src="../../assets/Blue-Beach-Wave.mp4" type="video/mp4" controls autoplay loop></video>
+    <div *ngIf="isLoaded" class="gif">
+        <img src="../../assets/BlueBeachGif.gif" alt="">
     </div>
     <div *ngFor="let announcement of actual" class="card">
         <img src="{{announcement.cover}}" alt="No Photo">

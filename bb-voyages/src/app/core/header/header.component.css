@@ -34,6 +34,33 @@ header{
     border-radius: 0.5em;
 }
 
+.login-register,
+.logout-profile {
+    width: 150px;
+    height: 50px;
+    border: 2px solid rgb(221, 221, 221);
+    background-color: rgb(221, 221, 221);
+    border-radius: 2em;
+    align-items: center;
+    text-align: center;
+}
+.auth .login-register,
+.logout-profile {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    align-content: center;
+}
+
+.auth .login-register button,
+.logout-profile button {
+    color: rgb(15, 119, 189);
+    background-color: transparent;
+    border: none;
+    font-size: 18px;
+    font-weight: bold;
+}
+
 nav {
     display: flex;
     justify-content: space-between;
