@@ -52,6 +52,30 @@ const bookingSchema = new mongoose.Schema({
   // Add more properties as needed
 });
 
+// Define rent schema
+const rentSchema = new mongoose.Schema({
+  userId: { type: mongoose.Schema.Types.ObjectId, ref: "User" }, // Reference to the user who rented
+  date: { type: Date, default: Date.now }, // Date of the rent (default to current date)
+  location: {
+    country: String,
+    city: String,
+  },
+  photos: [String],
+  cover: String,
+  description: String,
+  highlights: [String],
+  price: Number,
+  options: {
+    wifi: Boolean,
+    parking: Boolean,
+    breakfast: Boolean,
+    pets: Boolean,
+    smoking: Boolean,
+  },
+  // Add more properties as needed
+});
+const Rent = mongoose.model("Rents", rentSchema);
+
 const Booking = mongoose.model("Booking", bookingSchema);
 
 // Middleware to parse JSON
@@ -161,6 +185,69 @@ app.get("/api/bookings/:id", async (req, res) => {
     res.status(200).json(booking);
   } catch (error) {
     // Handle any errors
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Route handlers
+// Get all rents
+app.get("/api/rents", async (req, res) => {
+  try {
+    const rents = await Rent.find();
+    res.status(200).json(rents);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Get a single rent by ID
+app.get("/api/rents/:id", async (req, res) => {
+  try {
+    const rent = await Rent.findById(req.params.id);
+    if (!rent) {
+      return res.status(404).json({ message: "Rent not found" });
+    }
+    res.status(200).json(rent);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Create a new rent
+app.post("/api/rents", async (req, res) => {
+  try {
+    const rent = new Rent(req.body);
+    await rent.save();
+    res.status(201).json(rent);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Update an existing rent
+app.put("/api/rents/:id", async (req, res) => {
+  try {
+    const rent = await Rent.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+    });
+    if (!rent) {
+      return res.status(404).json({ message: "Rent not found" });
+    }
+    res.status(200).json(rent);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Delete a rent
+app.delete("/api/rents/:id", async (req, res) => {
+  try {
+    const rent = await Rent.findByIdAndDelete(req.params.id);
+    if (!rent) {
+      return res.status(404).json({ message: "Rent not found" });
+    }
+    res.status(204).end(); // No content
+  } catch (error) {
     res.status(500).json({ error: error.message });
   }
 });
