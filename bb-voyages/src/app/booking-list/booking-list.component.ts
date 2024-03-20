@@ -10,6 +10,8 @@ import { Announcement } from '../types/announcment';
 export class BookingListComponent implements OnInit {
   announcements: Announcement[] = [];
   actual: Announcement[] = [];
+  isLoaded: boolean = false;
+
   constructor(private api: ApiService) {}
   ngOnInit(): void {
     this.api.getBookings().subscribe((announcements) => {
@@ -21,6 +23,7 @@ export class BookingListComponent implements OnInit {
       } else {
         this.actual = this.announcements.slice(0, 8);
       }
+      this.isLoaded = true;
     });
   }
 }

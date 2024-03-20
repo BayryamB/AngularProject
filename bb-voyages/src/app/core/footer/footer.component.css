@@ -6,9 +6,7 @@ footer {
     color: rgb(221, 221, 221); /* Set text color */
     font-family: 'Helvetica', sans-serif; 
     height: 350px;
-    position: absolute;
     width: 100%;
-    bottom: 0;
 }
 
 .footer-container {

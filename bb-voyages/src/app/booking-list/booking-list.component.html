@@ -1,4 +1,7 @@
 <div class="content">
+    <div *ngIf="!isLoaded" class="loader">
+        <app-loader></app-loader>
+    </div>
     <div *ngFor="let announcement of actual" class="card">
         <img src="{{announcement.cover}}" alt="No Photo">
         <div class="heading-p">
