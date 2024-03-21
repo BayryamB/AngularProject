@@ -6,21 +6,22 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { UserModule } from './user/user.module';
 import { SharedModule } from './shared/shared.module';
-import { MainComponent } from './main/main.component';
 import { BookingListComponent } from './booking-list/booking-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { RentsModule } from './rents/rents.module';
+import { OffersModule } from './offers/offers.module';
 
 @NgModule({
-  declarations: [AppComponent, MainComponent, BookingListComponent],
+  declarations: [AppComponent, BookingListComponent],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     CoreModule,
     UserModule,
     SharedModule,
     HttpClientModule,
     RentsModule,
+    OffersModule,
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

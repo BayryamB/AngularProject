@@ -4,9 +4,10 @@ import { CurrentRentComponent } from './current-rent/current-rent.component';
 import { AddRentComponent } from './add-rent/add-rent.component';
 import { RentsRoutingModule } from './rents-routing.module';
 import { RentsListComponent } from './rents-list/rents-list.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [CurrentRentComponent, AddRentComponent, RentsListComponent],
-  imports: [CommonModule, RentsRoutingModule],
+  imports: [CommonModule, RentsRoutingModule, SharedModule],
 })
 export class RentsModule {}

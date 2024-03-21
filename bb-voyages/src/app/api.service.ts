@@ -13,4 +13,9 @@ export class ApiService {
     const { apiUrl } = environment;
     return this.http.get<Announcement[]>(`${apiUrl}/bookings`);
   }
+
+  getRents() {
+    const { apiUrl } = environment;
+    return this.http.get<Announcement[]>(`${apiUrl}/rents`);
+  }
 }

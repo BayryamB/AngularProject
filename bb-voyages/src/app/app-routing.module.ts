@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { MainComponent } from './main/main.component';
+import { BookingListComponent } from './booking-list/booking-list.component';
 
 const routes: Routes = [
-  { path: '', component: MainComponent },
+  { path: '', component: BookingListComponent },
   { path: '**', redirectTo: 'home' },
 ];
 

@@ -1,6 +1,6 @@
 import { location } from './location';
 import { options } from './options';
-export interface Announcement {
+export interface Rent {
   location: location;
   options: options;
   _id: string;

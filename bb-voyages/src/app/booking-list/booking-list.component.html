@@ -1,17 +1,29 @@
-<div class="content">
-    <div *ngIf="!isLoaded" class="loader">
-        <app-loader></app-loader>
-    </div>
-    <div *ngIf="isLoaded" class="gif">
-        <img src="../../assets/BlueBeachGif.gif" alt="">
-    </div>
-    <div *ngFor="let announcement of actual" class="card">
-        <img src="{{announcement.cover}}" alt="No Photo">
-        <div class="heading-p">
-            <p>{{announcement.location.city}},</p>
-            <p>{{announcement.location.country}}</p>
+<div class="container">
+    <div class="fixed-size">
+        <div class="announcement">
+            <p>Exciting News for Your Stay!</p>
+            <p>Looking for the perfect accommodation for your next adventure? We've got you covered!</p>
+            <ul>
+                <li><p>Indulge in flexible stays for spontaneous travelers. No commitments, just comfort.</p><a routerLink="/home">Booking Per Night</a></li>
+                <li><p>Experience extended stays with exclusive perks. Your home away from home awaits.</p><a routerLink="/rents">Booking Long Term</a></li>
+            </ul>
         </div>
-        <p>Posted on {{announcement.date}}</p>
-        <p>{{announcement.price}} € night</p>
+        <div class="content">
+            <div *ngIf="!isLoaded" class="loader">
+                <app-loader></app-loader>
+            </div>
+            <div *ngIf="isLoaded" class="gif">
+                <img src="../../assets/BlueBeachGif.gif" alt="">
+            </div>
+            <div *ngFor="let announcement of actual" class="card">
+                <img src="{{announcement.cover}}" alt="No Photo">
+                <div class="heading-p">
+                    <p>{{announcement.location.city}},</p>
+                    <p>{{announcement.location.country}}</p>
+                </div>
+                <p>Posted on {{announcement.date}}</p>
+                <p>{{announcement.price}} € night</p>
+            </div>
+        </div>
     </div>
 </div>

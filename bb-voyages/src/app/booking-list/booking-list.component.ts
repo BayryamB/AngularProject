@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
 import { Announcement } from '../types/announcment';
+import { LoaderComponent } from '../shared/loader/loader.component';
 
 @Component({
   selector: 'app-booking-list',
