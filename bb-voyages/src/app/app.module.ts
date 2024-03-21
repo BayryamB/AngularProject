@@ -9,6 +9,7 @@ import { SharedModule } from './shared/shared.module';
 import { MainComponent } from './main/main.component';
 import { BookingListComponent } from './booking-list/booking-list.component';
 import { HttpClientModule } from '@angular/common/http';
+import { RentsModule } from './rents/rents.module';
 
 @NgModule({
   declarations: [AppComponent, MainComponent, BookingListComponent],
@@ -19,6 +20,7 @@ import { HttpClientModule } from '@angular/common/http';
     UserModule,
     SharedModule,
     HttpClientModule,
+    RentsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
