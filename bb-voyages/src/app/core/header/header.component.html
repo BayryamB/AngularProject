@@ -5,14 +5,14 @@
         <img src="../../../assets/logo.jpg" alt="BB-Voyages">
       </div>
       <div class="auth">
-        <div class="login-register">
+        <div *ngIf="!isLoggedIn" class="login-register">
           <button routerLink="/login">Login</button>
           <button routerLink="/register">Register</button>
         </div>
-        <!-- <div class="logout-profile">
+        <div *ngIf="isLoggedIn" class="logout-profile">
                   <button>Profile</button>
-                  <button>Logout</button>
-            </div> -->
+                  <button (click)="logout()">Logout</button>
+            </div>
       </div>
     </div>
     <nav>
