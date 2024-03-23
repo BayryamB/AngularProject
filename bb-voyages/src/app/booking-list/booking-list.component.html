@@ -21,7 +21,7 @@
                     <p>{{announcement.location.city}},</p>
                     <p>{{announcement.location.country}}</p>
                 </div>
-                <p>Posted on {{announcement.date}}</p>
+                <p>Posted on {{announcement.date.endsWith(':00.000Z') ? announcement.date.slice(0, 10) : announcement.date}}</p>
                 <p>{{announcement.price}} € night</p>
             </div>
         </div>

@@ -1,0 +1,63 @@
+.container {
+    background-image: url('../../../assets/add-rent-background.jpg');
+    background-size: cover;
+    background-position: center;
+    color: rgb(43, 39, 39);
+}
+.fixed-size {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 50px;
+    text-align: center;
+}
+
+.create-rent-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    text-align: center;
+    
+}
+
+.create-rent-form input, .create-rent-form textarea {
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid rgb(43, 39, 39);
+    color: rgb(43, 39, 39);
+    font-family: 'Helvetica', sans-serif;
+    font-size: 1.2em;
+    margin-right: 0.5em;
+    margin-top: 1em;
+}
+
+.input-photos {
+    margin: 0 auto;
+    text-align: left;
+}
+
+.create-rent-form textarea{
+    resize: none;
+    height: 25px;
+}
+
+.create-rent-form textarea:focus, .create-rent-form input:focus {
+    border: none;
+}
+
+.input-options {
+    margin: 0 auto;
+    text-align: left;
+}
+
+.create-rent-form button {
+    background-color: transparent;
+    border: 2px solid rgb(43, 39, 39);
+    border-radius: 2em;
+    color: rgb(43, 39, 39);
+    font-family: 'Helvetica', sans-serif;
+    font-size: 1.2em;
+    padding: 0.5em;
+    width: 200px;
+    margin: 0 auto;
+    font-weight: bold;
+}
