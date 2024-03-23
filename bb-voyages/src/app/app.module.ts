@@ -10,6 +10,7 @@ import { BookingListComponent } from './booking-list/booking-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { RentsModule } from './rents/rents.module';
 import { OffersModule } from './offers/offers.module';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent, BookingListComponent],
@@ -21,6 +22,7 @@ import { OffersModule } from './offers/offers.module';
     HttpClientModule,
     RentsModule,
     OffersModule,
+    FormsModule,
     AppRoutingModule,
   ],
   providers: [],

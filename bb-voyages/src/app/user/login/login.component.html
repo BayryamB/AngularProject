@@ -1,17 +1,20 @@
 <div class="container">
     <div class="fixed-size">
         <div class="login-container">
-            <form class="login-form">
-                <h2>Login</h2>
-                <div class="input-group">
-                    <label for="username">Username:</label>
-                    <input #inputUsername type="text" id="username" name="username" required>
+            <form #loginForm="ngForm" (ngSubmit)="loginHandler(loginForm)">
+                <div class="login-form">
+                    <h2>Login</h2>
+                    <div class="input-group">
+                        <label for="username">Username:</label>
+                        <input #inputUsername type="text" id="username" name="username" required ngModel>
+                    </div>
+                    <div class="input-group">
+                        <label for="password">Password:</label>
+                        <input #inputPassword type="password" id="password" name="password" required ngModel>
+                    </div>
+                    <button>Login</button>
                 </div>
-                <div class="input-group">
-                    <label for="password">Password:</label>
-                    <input #inputPassword type="password" id="password" name="password" required>
-                </div>
-                <button (click)="login(inputUsername.value, inputPassword.value)">Login</button>
+
             </form>
         </div>
     </div>

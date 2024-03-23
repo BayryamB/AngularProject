@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-
+import { UserLogin } from '../types/userLogin';
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
-  user = {} || undefined;
+  user: UserLogin | undefined = undefined;
   USER_KEY = '[user]';
   get isLoggedIn(): boolean {
     return !!this.user;
@@ -16,11 +16,8 @@ export class UserService {
     }
   }
 
-  login() {
-    this.user = {
-      username: 'admin',
-      password: 'admin',
-    };
+  login(user: UserLogin | undefined) {
+    this.user = user;
     localStorage.setItem(this.USER_KEY, JSON.stringify(this.user));
   }
 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { UserService } from 'src/app/user/user.service';
 
 @Component({
@@ -10,7 +10,6 @@ export class HeaderComponent {
   constructor(private userService: UserService) {}
 
   get isLoggedIn(): boolean {
-    console.log(this.userService.isLoggedIn);
     return this.userService.isLoggedIn;
   }
 
