@@ -15,6 +15,7 @@ export class RentsListComponent implements OnInit {
     this.api.getRents().subscribe((rents) => {
       this.rents = rents;
       this.isLoaded = true;
+      console.log(this.rents);
     });
     return;
   }

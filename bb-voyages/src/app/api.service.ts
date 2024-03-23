@@ -1,8 +1,9 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment.development';
 import { Announcement } from './types/announcment';
 import { Rent } from './types/rent';
+import { sendRent } from './types/sendRent';
 
 @Injectable({
   providedIn: 'root',
@@ -20,8 +21,12 @@ export class ApiService {
     return this.http.get<Announcement[]>(`${apiUrl}/rents`);
   }
 
-  addRent(rent: Rent) {
+  addRent(rent: sendRent | undefined) {
     const { apiUrl } = environment;
-    return this.http.post(`${apiUrl}/rents`, { rent });
+    const url = `${apiUrl}/rents`;
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+    return this.http.post(url, rent, { headers });
   }
 }
