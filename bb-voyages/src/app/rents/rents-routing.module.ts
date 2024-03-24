@@ -8,9 +8,12 @@ const routes: Routes = [
   { path: 'rent', component: CurrentRentComponent },
   { path: 'add-rent', component: AddRentComponent },
   { path: 'rents', component: RentsListComponent },
+  { path: 'rents/:id', component: CurrentRentComponent },
 ];
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [],
 })
-export class RentsRoutingModule {}
+export class RentsRoutingModule {
+  
+}

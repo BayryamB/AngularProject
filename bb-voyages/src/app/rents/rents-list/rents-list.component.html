@@ -5,13 +5,15 @@
                 <app-loader></app-loader>
             </div>
             <div *ngFor="let rent of rents" class="card">
-                <img src="{{rent.cover}}" alt="No Photo">
-                <div class="heading-p">
-                    <p>{{rent.location.city}},</p>
-                    <p>{{rent.location.country}}</p>
+                <div (click)="clickCard(rent)" class="click-card">
+                    <img src="{{rent.cover}}" alt="No Photo">
+                    <div class="heading-p">
+                        <p>{{rent.location.city}},</p>
+                        <p>{{rent.location.country}}</p>
+                    </div>
+                    <p>Posted on {{rent.date.endsWith(':00.000Z') ? rent.date.slice(0, 10) : rent.date}}</p>
+                    <p>{{rent.price}} € month</p>
                 </div>
-                <p>Posted on {{rent.date.endsWith(':00.000Z') ? rent.date.slice(0, 10) : rent.date}}</p>
-                <p>{{rent.price}} € month</p>
             </div>
         </div>
     </div>
