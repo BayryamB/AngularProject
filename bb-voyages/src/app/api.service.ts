@@ -21,6 +21,11 @@ export class ApiService {
     return this.http.get<Announcement[]>(`${apiUrl}/rents`);
   }
 
+  getSingleRent(id: string) {
+    const { apiUrl } = environment;
+    return this.http.get<Rent>(`${apiUrl}/rents/${id}`);
+  }
+
   addRent(rent: sendRent | undefined) {
     const { apiUrl } = environment;
     const url = `${apiUrl}/rents`;
