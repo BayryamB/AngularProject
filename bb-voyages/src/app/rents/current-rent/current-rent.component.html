@@ -1,1 +1,34 @@
-<p>current-rent works!</p>
+<div class="container">
+    <div class="fixed-size">
+        <div class="content">
+            <div *ngIf="!isLoaded" class="loader">
+                <app-loader></app-loader>
+            </div>
+            <div *ngIf="isLoaded" class="card">
+                <h2>{{rent?.location?.city}}, {{rent?.location?.country}}</h2>
+                <img src="{{rent?.cover}}" alt="No Photo">
+                <div class="info">
+                    <div class="text">
+                        <h3>Information</h3>
+                        <p>Posted on {{rent?.date?.endsWith(':00.000Z') ? rent?.date?.slice(0, 10) : rent?.date}}</p>
+                        <p>{{rent?.price}} € month</p>
+                        <p>{{rent?.description}}</p>
+                    </div>
+                    <div class="options">
+                        <h3>Options</h3>
+                        <p *ngIf="rent?.options?.wifi">Wifi<i class="fa-solid fa-check"></i></p>
+                        <p *ngIf="!rent?.options?.wifi">Wifi<i class="fa-solid fa-x"></i></p>
+                        <p *ngIf="rent?.options?.parking">Parking<i class="fa-solid fa-check"></i></p>
+                        <p *ngIf="!rent?.options?.parking">Parking<i class="fa-solid fa-x"></i></p>
+                        <p *ngIf="rent?.options?.breakfast">Breakfast<i class="fa-solid fa-check"></i></p>
+                        <p *ngIf="!rent?.options?.breakfast">Breakfast<i class="fa-solid fa-x"></i></p>
+                        <p *ngIf="rent?.options?.pets">Pets Allowed<i class="fa-solid fa-check"></i></p>
+                        <p *ngIf="!rent?.options?.pets">Pets Allowed<i class="fa-solid fa-x"></i></p>
+                        <p *ngIf="rent?.options?.smoking">Smoking Allowed<i class="fa-solid fa-check"></i></p>
+                        <p *ngIf="!rent?.options?.smoking">Smoking Allowed<i class="fa-solid fa-x"></i></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
