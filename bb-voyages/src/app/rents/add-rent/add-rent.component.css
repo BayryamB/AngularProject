@@ -28,6 +28,7 @@
     font-size: 1.2em;
     margin-right: 0.5em;
     margin-top: 1em;
+
 }
 
 .input-photos {
@@ -60,4 +61,15 @@
     width: 200px;
     margin: 0 auto;
     font-weight: bold;
+}
+
+.create-rent-form button:hover {
+    background-color: rgb(43, 39, 39);
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+}
+
+input.ng-invalid.ng-touched, textarea.ng-invalid.ng-touched {
+    border-bottom: 1px solid red;
+    background-color: transparent;
 }

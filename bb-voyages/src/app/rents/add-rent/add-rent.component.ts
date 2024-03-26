@@ -4,7 +4,7 @@ import { sendRent } from 'src/app/types/sendRent';
 import { NgForm } from '@angular/forms';
 import { location } from 'src/app/types/location';
 import { options } from 'src/app/types/options';
-import { RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-rent',
@@ -13,7 +13,7 @@ import { RouterLink } from '@angular/router';
 })
 export class AddRentComponent {
   rent: sendRent | undefined = undefined;
-  constructor(private api: ApiService) {}
+  constructor(private api: ApiService, private router: Router) {}
 
   addRentHandler(addRentForm: NgForm) {
     const location: location = {
@@ -29,6 +29,7 @@ export class AddRentComponent {
       addRentForm.value.photo2,
       addRentForm.value.photo3,
     ];
+
     const options: options = {
       wifi: addRentForm.value.wifi ? true : false,
       parking: addRentForm.value.parking ? true : false,
@@ -55,11 +56,8 @@ export class AddRentComponent {
       photos,
       options,
     };
-    this.addRent(this.rent);
+    this.api.addRent(this.rent).subscribe((data) => console.log(data));
     addRentForm.reset();
-  }
-
-  addRent(rent: sendRent | undefined) {
-    this.api.addRent(rent).subscribe((data) => console.log(data));
+    this.router.navigate(['/rents']);
   }
 }

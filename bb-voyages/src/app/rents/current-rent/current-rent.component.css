@@ -10,7 +10,7 @@
 
 .card {
     margin: 0 auto;
-    padding: 1em;
+    padding: 2em;
     background-color: #0b89ddb0;
     border-radius: 0.5em;
     color: rgb(221, 221, 221);
@@ -25,8 +25,6 @@
 }
 
 .card img {
-    width: 100%;
-    height: auto;
     object-fit: fill;
     width: 60%;
     height: auto;
