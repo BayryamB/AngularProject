@@ -1,27 +1,24 @@
 import { Component } from '@angular/core';
 import { UserService } from '../user.service';
 import { NgForm } from '@angular/forms';
-import { UserLogin } from 'src/app/types/userLogin';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
-  userLogin: UserLogin | undefined = undefined;
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService, private router: Router) {}
 
   loginHandler(loginForm: NgForm) {
+    if (!loginForm.valid) {
+      return;
+    }
     const username = loginForm.value.username;
     const password = loginForm.value.password;
-    this.userLogin = {
-      username,
-      password,
-    };
     loginForm.reset();
-    this.login(this.userLogin);
-  }
-  login(user: UserLogin | undefined) {
-    this.userService.login(user);
+    this.userService.login(username, password).subscribe(() => {
+      this.router.navigate(['/']);
+    });
   }
 }

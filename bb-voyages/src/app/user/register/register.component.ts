@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { UserRegister } from 'src/app/types/userRegister';
 import { NgForm } from '@angular/forms';
 import { UserService } from '../user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -11,7 +12,7 @@ import { UserService } from '../user.service';
 export class RegisterComponent {
   userRegister: UserRegister | undefined = undefined;
 
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService, private router: Router) {}
 
   registerHandler(registerForm: NgForm) {
     const username = registerForm.value.username;
@@ -24,6 +25,10 @@ export class RegisterComponent {
         password,
         email,
       };
+
+      this.userService.register(username, password, email).subscribe(() => {
+        this.router.navigate(['/']);
+      });
       console.log(this.userRegister);
       registerForm.reset();
     } else {
