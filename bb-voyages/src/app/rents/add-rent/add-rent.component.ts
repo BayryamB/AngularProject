@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 })
 export class AddRentComponent {
   rent: sendRent | undefined = undefined;
+  userId = localStorage.getItem('userId');
   constructor(private api: ApiService, private router: Router) {}
 
   addRentHandler(addRentForm: NgForm) {
@@ -46,7 +47,7 @@ export class AddRentComponent {
     const currentYear = currentDate.getFullYear();
     //Need to change after making authentication
     this.rent = {
-      userId: '609fd64984bc153b54e51a11',
+      userId: this.userId!,
       date: `${currentYear}-${currentMonth}-${currentDay} ${currentHour}:${currentMinutes}`,
       location,
       cover,

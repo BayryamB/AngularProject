@@ -29,7 +29,6 @@ export class RegisterComponent {
       this.userService.register(username, password, email).subscribe(() => {
         this.router.navigate(['/']);
       });
-      console.log(this.userRegister);
       registerForm.reset();
     } else {
       alert('Passwords do not match');

@@ -34,6 +34,11 @@ header{
     border-radius: 0.5em;
 }
 
+.auth button:hover {
+    cursor: pointer;
+}
+
+
 .login-register,
 .logout-profile {
     width: 150px;

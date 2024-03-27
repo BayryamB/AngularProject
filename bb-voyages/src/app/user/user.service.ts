@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { UserRegister } from '../types/userRegister';
 import { UserLogin } from '../types/userLogin';
 import { environment } from 'src/environments/environment.development';
+import { map } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
@@ -30,19 +31,38 @@ export class UserService {
   register(username: string, password: string, email: string) {
     const { apiUrl } = environment;
     this.user = { username, password };
-    this.setInLocalStorage = { username, password };
-    return this.http.post<UserRegister>(`${apiUrl}/register`, {
-      username,
-      password,
-      email,
-    });
+    return this.http
+      .post<UserRegister>(`${apiUrl}/register`, {
+        username,
+        password,
+        email,
+      })
+      .pipe(
+        map((response) => {
+          if (this.user) {
+            this.user.userId = response.userId;
+          }
+          localStorage.setItem(this.USER_KEY, JSON.stringify(this.user));
+          return response;
+        })
+      );
   }
 
   login(username: string, password: string) {
-    return this.http.post<UserLogin>(`${environment.apiUrl}/login`, {
-      username,
-      password,
-    });
+    this.user = { username, password };
+    return this.http
+      .post<UserLogin>(`${environment.apiUrl}/login`, this.user)
+      .pipe(
+        map((response) => {
+          console.log(response);
+          debugger;
+          if (this.user) {
+            this.user.userId = response.userId;
+          }
+          localStorage.setItem(this.USER_KEY, JSON.stringify(this.user));
+          return response;
+        })
+      );
   }
 
   logout() {

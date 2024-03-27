@@ -90,7 +90,9 @@ app.post("/api/register", async (req, res) => {
       password: hashedPassword,
     });
     await user.save();
-    res.status(201).json({ message: "User registered successfully" });
+    res
+      .status(201)
+      .json({ message: "User registered successfully", userId: user._id });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -113,7 +115,7 @@ app.post("/api/login", async (req, res) => {
     const token = jwt.sign({ username: user.username }, "your_secret_key", {
       expiresIn: "1h",
     });
-    res.status(200).json({ token: token });
+    res.status(200).json({ token: token, userId: user._id });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

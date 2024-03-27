@@ -20,7 +20,7 @@
       <ul>
         <li><a routerLink="">Home</a></li>
         <li><a routerLink="/rents">All Rents</a></li>
-        <li><a routerLink="/add-rent">Add Rent</a></li>
+        <li *ngIf="isLoggedIn"><a routerLink="/add-rent">Add Rent</a></li>
         <li><a href="#">Blog</a></li>
         <li><a href="#">FAQ</a></li>
         <li><a href="#">Help</a></li>
