@@ -5,6 +5,7 @@ import { NgForm } from '@angular/forms';
 import { location } from 'src/app/types/location';
 import { options } from 'src/app/types/options';
 import { Router } from '@angular/router';
+import { UserService } from 'src/app/user/user.service';
 
 @Component({
   selector: 'app-add-rent',
@@ -13,8 +14,12 @@ import { Router } from '@angular/router';
 })
 export class AddRentComponent {
   rent: sendRent | undefined = undefined;
-  userId = localStorage.getItem('userId');
-  constructor(private api: ApiService, private router: Router) {}
+  userId = this.userService.userId;
+  constructor(
+    private api: ApiService,
+    private router: Router,
+    private userService: UserService
+  ) {}
 
   addRentHandler(addRentForm: NgForm) {
     const location: location = {

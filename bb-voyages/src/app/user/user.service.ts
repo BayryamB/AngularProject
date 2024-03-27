@@ -14,6 +14,10 @@ export class UserService {
     return !!this.user;
   }
 
+  get userId(): string | undefined {
+    return this.user?.userId;
+  }
+
   set setInLocalStorage(user: UserLogin | undefined) {
     this.user = user;
     if (user) {
@@ -43,7 +47,6 @@ export class UserService {
             this.user.userId = response.userId;
           }
           localStorage.setItem(this.USER_KEY, JSON.stringify(this.user));
-          return response;
         })
       );
   }
@@ -60,7 +63,6 @@ export class UserService {
             this.user.userId = response.userId;
           }
           localStorage.setItem(this.USER_KEY, JSON.stringify(this.user));
-          return response;
         })
       );
   }

@@ -4,6 +4,7 @@ import { ApiService } from 'src/app/api.service';
 import { LoaderComponent } from 'src/app/shared/loader/loader.component';
 import { options } from 'src/app/types/options';
 import { Rent } from 'src/app/types/rent';
+import { UserService } from 'src/app/user/user.service';
 
 @Component({
   selector: 'app-current-rent',
@@ -14,7 +15,12 @@ export class CurrentRentComponent {
   rent: Rent | undefined = undefined;
   isLoaded: boolean = false;
   currentOptions: options | undefined = undefined;
-  constructor(private route: ActivatedRoute, private api: ApiService) {}
+  isOwner: boolean = false;
+  constructor(
+    private route: ActivatedRoute,
+    private api: ApiService,
+    private userService: UserService
+  ) {}
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
@@ -24,6 +30,9 @@ export class CurrentRentComponent {
           this.isLoaded = true;
           console.log(rent);
           this.currentOptions = rent.options;
+          if (this.userService.userId === rent.userId) {
+            this.isOwner = true;
+          }
         });
       } catch (error) {
         console.log(error);
