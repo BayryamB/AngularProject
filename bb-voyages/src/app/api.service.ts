@@ -50,4 +50,13 @@ export class ApiService {
     const url = `${apiUrl}/users/${userId}`;
     return this.http.get<User>(url);
   }
+
+  updateUser(userId: string, user: User | undefined) {
+    const { apiUrl } = environment;
+    const url = `${apiUrl}/users/${userId}`;
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+    return this.http.put(url, user, { headers });
+  }
 }

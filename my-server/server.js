@@ -143,6 +143,29 @@ app.get("/api/users/:id", async (req, res) => {
   }
 });
 
+// Update user by ID
+app.put("/api/users/:id", async (req, res) => {
+  try {
+    const userId = req.params.id;
+    const updateData = req.body;
+
+    // Find the user by ID and update it in the database
+    const updatedUser = await User.findByIdAndUpdate(userId, updateData, {
+      new: true,
+    });
+
+    if (!updatedUser) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    // If user is updated successfully, send it in the response
+    res.json(updatedUser);
+  } catch (error) {
+    // If there's an error, send an error response
+    res.status(500).json({ error: error.message });
+  }
+});
+
 // Add booking endpoint
 app.post("/api/bookings", async (req, res) => {
   try {
