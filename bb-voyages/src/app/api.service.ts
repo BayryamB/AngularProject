@@ -4,6 +4,7 @@ import { environment } from 'src/environments/environment.development';
 import { Announcement } from './types/announcment';
 import { Rent } from './types/rent';
 import { sendRent } from './types/sendRent';
+import { User } from './types/user';
 
 @Injectable({
   providedIn: 'root',
@@ -42,5 +43,11 @@ export class ApiService {
       'Content-Type': 'application/json',
     });
     return this.http.put(url, rent, { headers });
+  }
+
+  getUser(userId: string) {
+    const { apiUrl } = environment;
+    const url = `${apiUrl}/users/${userId}`;
+    return this.http.get<User>(url);
   }
 }

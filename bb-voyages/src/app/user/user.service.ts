@@ -4,6 +4,7 @@ import { UserRegister } from '../types/userRegister';
 import { UserLogin } from '../types/userLogin';
 import { environment } from 'src/environments/environment.development';
 import { map } from 'rxjs';
+import { User } from '../types/user';
 @Injectable({
   providedIn: 'root',
 })
@@ -58,7 +59,6 @@ export class UserService {
       .pipe(
         map((response) => {
           console.log(response);
-          debugger;
           if (this.user) {
             this.user.userId = response.userId;
           }

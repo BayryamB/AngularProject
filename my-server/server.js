@@ -24,6 +24,7 @@ app.use(cors());
 const userSchema = new mongoose.Schema({
   username: { type: String, unique: true },
   password: String,
+  email: String,
 });
 const User = mongoose.model("User", userSchema);
 
@@ -88,6 +89,7 @@ app.post("/api/register", async (req, res) => {
     const user = new User({
       username: req.body.username,
       password: hashedPassword,
+      email: req.body.email,
     });
     await user.save();
     res
@@ -117,6 +119,26 @@ app.post("/api/login", async (req, res) => {
     });
     res.status(200).json({ token: token, userId: user._id });
   } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Get user by ID
+app.get("/api/users/:id", async (req, res) => {
+  try {
+    const userId = req.params.id;
+
+    // Find the user by ID in the database
+    const user = await User.findById(userId);
+
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    // If user found, send it in the response
+    res.json(user);
+  } catch (error) {
+    // If there's an error, send an error response
     res.status(500).json({ error: error.message });
   }
 });

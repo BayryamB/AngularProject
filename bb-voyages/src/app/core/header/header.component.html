@@ -10,8 +10,8 @@
           <button routerLink="/register">Register</button>
         </div>
         <div *ngIf="isLoggedIn" class="logout-profile">
-                  <button>Profile</button>
-                  <button (click)="logout()">Logout</button>
+                <button routerLink="/profile">Profile</button>
+                <button (click)="logout()">Logout</button>
             </div>
       </div>
     </div>
