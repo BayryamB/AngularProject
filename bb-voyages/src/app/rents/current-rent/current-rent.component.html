@@ -28,8 +28,8 @@
                         <p *ngIf="!rent?.options?.smoking">Smoking Allowed<i class="fa-solid fa-x"></i></p>
                     </div>
                     <div *ngIf="isOwner" class="buttons"> 
-                        <button>Edit</button>
-                        <button>Delete</button>
+                        <button (click)="updateRent()" >Edit</button>
+                        <button class="del">Delete</button>
                     </div>
                 </div>
             </div>

@@ -19,7 +19,8 @@ export class CurrentRentComponent {
   constructor(
     private route: ActivatedRoute,
     private api: ApiService,
-    private userService: UserService
+    private userService: UserService,
+    private router: Router
   ) {}
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
@@ -28,7 +29,7 @@ export class CurrentRentComponent {
         this.api.getSingleRent(id).subscribe((rent) => {
           this.rent = rent;
           this.isLoaded = true;
-          console.log(rent);
+          //console.log(rent);
           this.currentOptions = rent.options;
           if (this.userService.userId === rent.userId) {
             this.isOwner = true;
@@ -38,5 +39,8 @@ export class CurrentRentComponent {
         console.log(error);
       }
     }
+  }
+  updateRent() {
+    this.router.navigate(['/rents/edit', this.rent?._id]);
   }
 }

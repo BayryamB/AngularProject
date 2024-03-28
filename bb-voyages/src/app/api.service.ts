@@ -34,4 +34,13 @@ export class ApiService {
     });
     return this.http.post(url, rent, { headers });
   }
+
+  updateRent(id: string, rent: Rent | undefined) {
+    const { apiUrl } = environment;
+    const url = `${apiUrl}/rents/${id}`;
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+    return this.http.put(url, rent, { headers });
+  }
 }

@@ -55,3 +55,22 @@
 .fa-x {
     color: rgb(255, 0, 0);
 }
+
+.buttons {
+    display: flex;
+    justify-content: space-around;
+}
+
+.buttons button {
+    width: 100px;
+    padding: 0.5em 1em;
+    border: none;
+    border-radius: 0.5em;
+    font-weight: bold;
+    margin-right: 0.5em;
+    cursor: pointer;
+}
+
+.del {
+    background-color: rgb(196, 44, 44);
+}
