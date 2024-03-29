@@ -11,13 +11,14 @@ export class LoginComponent {
   constructor(private userService: UserService, private router: Router) {}
 
   loginHandler(loginForm: NgForm) {
-    if (!loginForm.valid) {
+    if (loginForm.invalid) {
       return;
     }
     const username = loginForm.value.username;
     const password = loginForm.value.password;
     loginForm.reset();
-    this.userService.login(username, password).subscribe(() => {
+    this.userService.login(username, password).subscribe((response) => {
+      console.log(response);
       this.router.navigate(['/']);
     });
   }

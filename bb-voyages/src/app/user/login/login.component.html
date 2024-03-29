@@ -1,21 +1,38 @@
 <div class="container">
-    <div class="fixed-size">
-        <div class="login-container">
-            <form #loginForm="ngForm" (ngSubmit)="loginHandler(loginForm)">
-                <div class="login-form">
-                    <h2>Login</h2>
-                    <div class="input-group">
-                        <label for="username">Username:</label>
-                        <input #inputUsername type="text" id="username" name="username" required ngModel>
-                    </div>
-                    <div class="input-group">
-                        <label for="password">Password:</label>
-                        <input #inputPassword type="password" id="password" name="password" required ngModel>
-                    </div>
-                    <button>Login</button>
-                </div>
-
-            </form>
+  <div class="fixed-size">
+    <div class="login-container">
+      <form #loginForm="ngForm" (ngSubmit)="loginHandler(loginForm)">
+        <div class="login-form">
+          <h2>Login</h2>
+          <div class="input-group">
+            <label for="username">Username:</label>
+            <input
+              #inputUsername="ngModel"
+              type="text"
+              id="username"
+              name="username"
+              required
+              ngModel
+            />
+          </div>
+          <div class="input-group">
+            <label for="password">Password:</label>
+            <input
+              #inputPassword="ngModel"
+              type="password"
+              id="password"
+              name="password"
+              required
+              ngModel
+            />
+          </div>
+          <ng-container *ngIf="inputUsername.touched">
+            <p class="error" *ngIf="inputUsername.errors?.['required']">Username is required!</p>
+            <!-- <p>Email is not valid!</p> -->
+          </ng-container>
+          <button>Login</button>
         </div>
+      </form>
     </div>
+  </div>
 </div>

@@ -57,3 +57,10 @@
   cursor: pointer;
   margin-top: 0.5em;
 }
+
+.error {
+  color: rgb(219, 0, 0);
+  font-size: 18px;
+  font-weight: bold;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+}
