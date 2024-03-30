@@ -67,7 +67,6 @@ export class UserService {
           return throwError(() => error);
         }),
         map((response) => {
-          debugger;
           console.log(response);
           if (this.user) {
             console.log(this.user);
