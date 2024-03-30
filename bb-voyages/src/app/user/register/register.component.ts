@@ -11,7 +11,6 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent {
   userRegister: UserRegister | undefined = undefined;
-  //buttonEnabled: boolean = true;
 
   constructor(private userService: UserService, private router: Router) {}
 
@@ -25,9 +24,7 @@ export class RegisterComponent {
       alert('Password must be at least 6 characters long');
       return;
     }
-    // if (registerForm.valid) {
-    //   this.buttonEnabled = true;
-    // }
+
     if (password === confirmPassword) {
       this.userRegister = {
         username,

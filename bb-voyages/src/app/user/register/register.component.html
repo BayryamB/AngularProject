@@ -73,7 +73,9 @@
               Password must be at least 6 characters long!
             </p>
           </ng-container>
-          <div [ngClass]="{notValid: !registerForm.valid}" ><button [disabled]="!registerForm.valid">Register</button></div>
+          <div [ngClass]="{ notValid: !registerForm.valid }">
+            <button [disabled]="!registerForm.valid">Register</button>
+          </div>
         </div>
       </form>
     </div>
