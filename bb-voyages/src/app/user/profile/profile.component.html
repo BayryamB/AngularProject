@@ -39,12 +39,14 @@
                 Email is not valid!
               </p>
             </div>
-            <p class="notification">{{ isProfileUpdated ? 'Profile updated successfully!' : '' }}</p>
-            <button (click)="inEditMode = !inEditMode">Edit</button>
+            <p *ngIf="isProfileUpdated" class="notification">Profile updated successfully!</p>
+            <div class="buttons">
+              <button (click)="inEditMode = !inEditMode">Edit</button>
             <div *ngIf="inEditMode">
                 <button (click)="saveProfile()">
                     Save
                   </button>
+            </div>
             </div>
           </form>
         </div>

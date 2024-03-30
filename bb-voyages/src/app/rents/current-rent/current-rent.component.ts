@@ -43,4 +43,10 @@ export class CurrentRentComponent {
   updateRent() {
     this.router.navigate(['/rents/edit', this.rent?._id]);
   }
+
+  deleteRent() {
+    this.api.deleteRent(this.rent?._id!).subscribe(() => {
+      this.router.navigate(['/rents']);
+    });
+  }
 }

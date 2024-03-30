@@ -45,6 +45,12 @@ export class ApiService {
     return this.http.put(url, rent, { headers });
   }
 
+  deleteRent(id: string) {
+    const { apiUrl } = environment;
+    const url = `${apiUrl}/rents/${id}`;
+    return this.http.delete(url);
+  }
+
   getUser(userId: string) {
     const { apiUrl } = environment;
     const url = `${apiUrl}/users/${userId}`;

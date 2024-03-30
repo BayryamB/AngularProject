@@ -7,3 +7,38 @@
 .profile-container {
     margin: 2em auto;
 }
+
+.profile-img img{
+    width: 20em;
+    aspect-ratio: 1;
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-details input {
+    margin: 0.5em 1em;
+    font-size: 14px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+}
+
+.profile-details button {
+    margin: 0.5em 1em;
+    padding: 0.5em 1em;
+    background-color: rgba(23, 202, 202, 0.466);
+    border: none;
+    border-radius: 1em;
+}
+
+.notification {
+    border: 2px solid rgb(23, 202, 202);
+    border-radius: 1em;
+    background-color: rgba(23, 202, 202, 0.466);
+}
