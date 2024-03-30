@@ -16,6 +16,7 @@ export class ProfileComponent {
   inEditMode: boolean = false;
   newEmail = '';
   newUsername = '';
+  isProfileUpdated: boolean = false;
   constructor(
     private service: UserService,
     private router: Router,
@@ -40,22 +41,17 @@ export class ProfileComponent {
       if (value.username !== '') {
         this.newUsername = value.username;
       }
-      console.log(this.newEmail, this.newUsername);
     });
+  }
 
-    // if (updateForm.valid) {
-    //   const username = updateForm.value.username;
-    //   const email = updateForm.value.email;
-    //   this.user = {
-    //     username,
-    //     email,
-    //     userId: this.userId,
-    //     password: this.user?.password!,
-    //   };
-    //   updateForm.reset();
-    //   console.log(this.user);
-
-    //this.api.updateUser(this.userId, this.user).subscribe(() => {});
-    //}
+  saveProfile() {
+    if (this.user) {
+      this.user.email = this.newEmail;
+      this.user.username = this.newUsername;
+      this.api.updateUser(this.userId, this.user).subscribe(() => {
+        this.inEditMode = false;
+      });
+    }
+    this.isProfileUpdated = true;
   }
 }
