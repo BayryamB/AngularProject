@@ -58,9 +58,30 @@
   margin-top: 0.5em;
 }
 
-.error {
-  color: rgb(219, 0, 0);
+.notValid button{
+  background-color: rgba(255, 0, 0, 0.550);
+  margin: 0 auto;
+  color: rgb(36, 36, 36);
+  border: none;
+  border-radius: 2em;
+  padding: 0.5em 1em;
   font-size: 18px;
   font-weight: bold;
-  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+  cursor: pointer;
+  margin-top: 0.5em;
+}
+
+.notValid button:hover {
+  cursor: not-allowed;
+}
+
+.error {
+  color: rgb(36, 36, 36);
+  font-weight: bold;
+  font-size: 18px;
+  text-align: center;
+  margin-bottom: 0.5em;
+  border: 2px solid rgba(255, 0, 0, 0.550);
+  border-radius: 2em;
+  background-color: rgba(255, 0, 0, 0.550);
 }

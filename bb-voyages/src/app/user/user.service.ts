@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { UserRegister } from '../types/userRegister';
 import { UserLogin } from '../types/userLogin';
 import { environment } from 'src/environments/environment.development';
-import { map } from 'rxjs';
+import { catchError, map, throwError } from 'rxjs';
 import { User } from '../types/user';
 @Injectable({
   providedIn: 'root',
@@ -12,6 +12,9 @@ export class UserService {
   user: UserLogin | undefined = undefined;
   USER_KEY = '[user]';
   get isLoggedIn(): boolean {
+    if (localStorage.length == 0) {
+      return false;
+    }
     return !!this.user;
   }
 
@@ -57,12 +60,21 @@ export class UserService {
     return this.http
       .post<UserLogin>(`${environment.apiUrl}/login`, this.user)
       .pipe(
+        catchError((error) => {
+          if (error) {
+            alert('Wrong username or password');
+          }
+          return throwError(() => error);
+        }),
         map((response) => {
+          debugger;
           console.log(response);
           if (this.user) {
+            console.log(this.user);
+
             this.user.userId = response.userId;
+            localStorage.setItem(this.USER_KEY, JSON.stringify(this.user));
           }
-          localStorage.setItem(this.USER_KEY, JSON.stringify(this.user));
         })
       );
   }

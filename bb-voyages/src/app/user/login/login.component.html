@@ -24,13 +24,22 @@
               name="password"
               required
               ngModel
+              minlength="6"
             />
           </div>
           <ng-container *ngIf="inputUsername.touched">
             <p class="error" *ngIf="inputUsername.errors?.['required']">Username is required!</p>
             <!-- <p>Email is not valid!</p> -->
           </ng-container>
-          <button>Login</button>
+          <ng-container *ngIf="inputPassword.touched">
+            <p class="error" *ngIf="inputPassword.errors?.['required']">
+              Password is required!
+            </p>
+            <p class="error" *ngIf="inputPassword.errors?.['minlength']">
+              Password must be at least 6 characters long!
+            </p>
+          </ng-container>
+          <div [ngClass]="{notValid: !loginForm.valid}" ><button [disabled]="!loginForm.valid">Login</button></div>
         </div>
       </form>
     </div>
