@@ -52,6 +52,15 @@ const bookingSchema = new mongoose.Schema({
 
   // Add more properties as needed
 });
+// Define Destination schema
+const destinationSchema = new mongoose.Schema({
+  name: { type: String },
+  country: { type: String },
+  description: String,
+  photos: [String],
+});
+
+const Destination = mongoose.model("Destination", destinationSchema);
 
 // Define rent schema
 const rentSchema = new mongoose.Schema({
@@ -232,6 +241,70 @@ app.get("/api/bookings/:id", async (req, res) => {
     res.status(200).json(booking);
   } catch (error) {
     // Handle any errors
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Get all destinations
+app.get("/api/destinations", async (req, res) => {
+  try {
+    const destinations = await Destination.find();
+    res.json(destinations);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Get destination by ID
+app.get("/api/destinations/:id", async (req, res) => {
+  try {
+    const destination = await Destination.findById(req.params.id);
+    if (!destination) {
+      return res.status(404).json({ error: "Destination not found" });
+    }
+    res.json(destination);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Create a new destination
+app.post("/api/destinations", async (req, res) => {
+  try {
+    const destination = new Destination(req.body);
+    await destination.save();
+    res.status(201).json(destination);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Update destination by ID
+app.put("/api/destinations/:id", async (req, res) => {
+  try {
+    const destination = await Destination.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { new: true }
+    );
+    if (!destination) {
+      return res.status(404).json({ error: "Destination not found" });
+    }
+    res.json(destination);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Delete destination by ID
+app.delete("/api/destinations/:id", async (req, res) => {
+  try {
+    const destination = await Destination.findByIdAndDelete(req.params.id);
+    if (!destination) {
+      return res.status(404).json({ error: "Destination not found" });
+    }
+    res.status(204).end();
+  } catch (error) {
     res.status(500).json({ error: error.message });
   }
 });

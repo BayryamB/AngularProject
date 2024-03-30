@@ -1,0 +1,32 @@
+.fixed-size {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.click-card {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+    margin: 1em 0em;
+}
+
+.click-card img{
+    cursor: pointer;
+    max-width: 1200px;
+    aspect-ratio: 3;
+    border-radius: 0.5em;
+    object-fit: cover;
+}
+
+.heading-p {
+    display: flex;
+    gap: 0.5em;
+    font-size: 1.6em;
+}
+
+.description p{
+    font-size: 1.2em;
+    line-height: 1.5em;
+    text-align: justify;
+    font-family: 'Helvetica', sans-serif;
+}

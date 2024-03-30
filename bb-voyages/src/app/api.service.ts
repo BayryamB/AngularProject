@@ -5,6 +5,7 @@ import { Announcement } from './types/announcment';
 import { Rent } from './types/rent';
 import { sendRent } from './types/sendRent';
 import { User } from './types/user';
+import { Destination } from './types/destination';
 
 @Injectable({
   providedIn: 'root',
@@ -20,6 +21,11 @@ export class ApiService {
   getRents() {
     const { apiUrl } = environment;
     return this.http.get<Announcement[]>(`${apiUrl}/rents`);
+  }
+
+  getDestinations() {
+    const { apiUrl } = environment;
+    return this.http.get<Destination[]>(`${apiUrl}/destinations`);
   }
 
   getSingleRent(id: string) {

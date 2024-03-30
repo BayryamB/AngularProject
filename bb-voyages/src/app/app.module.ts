@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { RentsModule } from './rents/rents.module';
 import { OffersModule } from './offers/offers.module';
 import { FormsModule } from '@angular/forms';
+import { DestinationsModule } from './destinations/destinations.module';
 
 @NgModule({
   declarations: [AppComponent, BookingListComponent],
@@ -22,6 +23,7 @@ import { FormsModule } from '@angular/forms';
     HttpClientModule,
     RentsModule,
     OffersModule,
+    DestinationsModule,
     FormsModule,
     AppRoutingModule,
   ],

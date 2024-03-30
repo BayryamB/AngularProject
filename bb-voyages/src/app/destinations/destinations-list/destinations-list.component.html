@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="fixed-size">
+        <div class="content">
+            <div *ngIf="!isLoaded" class="loader">
+                <app-loader></app-loader>
+            </div>
+            <div *ngFor="let destination of destinations" class="card">
+                <div class="click-card">
+                    <img osrc="{{destination.photos[0]}}" alt="No Photo">
+                    <div class="heading-p">
+                        <p>{{destination.name}},</p>
+                        <p>{{destination.country}}</p>
+                    </div>
+                    <div class="description">
+                        <p>{{destination.description}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
