@@ -20,6 +20,14 @@
                     <p>{{rent.price}} € month</p>
                 </div>
             </div>
+            <div *ngIf="rents.length < 1" class="no-rents">
+                <h1>No Rents</h1>
+                <p>No Rents Available</p>
+            </div>
+        </div>
+        <div class="create-msg">
+            <h3>Ready to list your space?</h3>
+            <button (click)="navigateToCreate()">Create your rental now!</button>
         </div>
     </div>
 </div>

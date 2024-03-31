@@ -7,8 +7,15 @@
 html, body { height: 100%; }
 
 body {
-    font-family: Roboto, "Helvetica Neue", sans-serif; 
-    background-color: #c9c9c9;
-    display: flex;
-    flex-direction: column;
+    background: hsla(40, 100%, 80%, 1);
+
+background: radial-gradient(circle, hsla(40, 100%, 80%, 1) 0%, hsla(316, 100%, 85%, 1) 45%, hsla(197, 70%, 75%, 1) 100%);
+
+background: -moz-radial-gradient(circle, hsla(40, 100%, 80%, 1) 0%, hsla(316, 100%, 85%, 1) 45%, hsla(197, 70%, 75%, 1) 100%);
+
+background: -webkit-radial-gradient(circle, hsla(40, 100%, 80%, 1) 0%, hsla(316, 100%, 85%, 1) 45%, hsla(197, 70%, 75%, 1) 100%);
+
+filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#FFDD98", endColorstr="#FFB3EB", GradientType=1 );
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#BAFFF6", endColorstr="#DFFFDC", GradientType=1 );
+    font-family: Roboto, "Helvetica Neue", sans-serif;
 }

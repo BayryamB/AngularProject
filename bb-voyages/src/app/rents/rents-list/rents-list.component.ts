@@ -28,4 +28,8 @@ export class RentsListComponent implements OnInit {
   clickCard(rent: Rent) {
     this.router.navigate(['/rents', rent._id]);
   }
+
+  navigateToCreate() {
+    this.router.navigate(['/add-rent']);
+  }
 }
