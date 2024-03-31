@@ -1,7 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment.development';
-import { Announcement } from './types/announcment';
 import { Rent } from './types/rent';
 import { sendRent } from './types/sendRent';
 import { User } from './types/user';
@@ -15,12 +14,12 @@ export class ApiService {
 
   getBookings() {
     const { apiUrl } = environment;
-    return this.http.get<Announcement[]>(`${apiUrl}/bookings`);
+    return this.http.get<Rent[]>(`${apiUrl}/bookings`);
   }
 
   getRents() {
     const { apiUrl } = environment;
-    return this.http.get<Announcement[]>(`${apiUrl}/rents`);
+    return this.http.get<Rent[]>(`${apiUrl}/rents`);
   }
 
   getDestinations() {

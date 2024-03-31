@@ -1,6 +1,11 @@
 <div class="container">
     <div class="fixed-size">
         <div class="content">
+            <div *ngIf="!isMainPage" class="welcome-message">
+                <h1>Welcome to Our Long-Term Rentals!</h1>
+                <p>Embark on a journey of extended stays and discover the perfect home away from home. Whether you're relocating for work, exploring a new city, or simply seeking a change of scenery, we're here to make your stay unforgettable.</p>
+                <p>Enjoy the comforts of home combined with exclusive perks and a sense of community. Browse our selection of long-term rental options and find the perfect living space for your needs.</p>
+            </div>
             <div *ngIf="!isLoaded" class="loader">
                 <app-loader></app-loader>
             </div>

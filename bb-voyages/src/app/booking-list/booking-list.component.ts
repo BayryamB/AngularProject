@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
-import { Announcement } from '../types/announcment';
 import { LoaderComponent } from '../shared/loader/loader.component';
+import { RentsListComponent } from '../rents/rents-list/rents-list.component';
+import { Rent } from '../types/rent';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-booking-list',
@@ -9,21 +11,16 @@ import { LoaderComponent } from '../shared/loader/loader.component';
   styleUrls: ['./booking-list.component.css'],
 })
 export class BookingListComponent implements OnInit {
-  announcements: Announcement[] = [];
-  actual: Announcement[] = [];
+  rents: Rent[] = [];
   isLoaded: boolean = false;
-
-  constructor(private api: ApiService) {}
+  isMainPage: boolean = true;
+  constructor(private api: ApiService, private router: Router) {}
   ngOnInit(): void {
-    this.api.getBookings().subscribe((announcements) => {
-      this.announcements = announcements;
-      if (this.announcements.length <= 4) {
-        this.actual = this.announcements;
-      } else if (this.announcements.length <= 8) {
-        this.actual = this.announcements.slice(0, 4);
-      } else {
-        this.actual = this.announcements.slice(0, 8);
-      }
+    if (this.router.url === '/bookings') {
+      this.isMainPage = false;
+    }
+    this.api.getBookings().subscribe((rents) => {
+      this.rents = rents;
       this.isLoaded = true;
     });
   }

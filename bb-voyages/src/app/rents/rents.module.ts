@@ -16,5 +16,6 @@ import { UpdateRentComponent } from './update-rent/update-rent.component';
     UpdateRentComponent,
   ],
   imports: [CommonModule, RentsRoutingModule, SharedModule, FormsModule],
+  exports: [RentsListComponent],
 })
 export class RentsModule {}

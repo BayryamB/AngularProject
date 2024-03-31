@@ -1,28 +1,24 @@
 <div class="container">
     <div class="fixed-size">
-        <div class="announcement">
-            <p>Exciting News for Your Stay!</p>
-            <p>Looking for the perfect accommodation for your next adventure? We've got you covered!</p>
-            <ul>
-                <li><p>Indulge in flexible stays for spontaneous travelers. No commitments, just comfort.</p><a routerLink="/">Booking Per Night</a></li>
-                <li><p>Experience extended stays with exclusive perks. Your home away from home awaits.</p><a routerLink="/rents">Booking Long Term</a></li>
-            </ul>
-        </div>
         <div class="content">
+            <div *ngIf="!isMainPage" class="welcome-message">
+                <h1>Welcome to Our Short-Term Rentals!</h1>
+                <p>Get ready for your next adventure with our short-term rental options. Whether you're planning a weekend getaway, a spontaneous trip, or just need a temporary place to stay, we have you covered.</p>
+                <p>Explore our selection of short-term rentals and discover the perfect accommodations for your trip. Enjoy flexibility, comfort, and convenience as you embark on your journey.</p>
+            </div>
             <div *ngIf="!isLoaded" class="loader">
                 <app-loader></app-loader>
             </div>
-            <div *ngIf="isLoaded" class="gif">
-                <img src="../../assets/BlueBeachGif.gif" alt="">
-            </div>
-            <div *ngFor="let announcement of actual" class="card">
-                <img src="{{announcement.cover}}" alt="No Photo">
-                <div class="heading-p">
-                    <p>{{announcement.location.city}},</p>
-                    <p>{{announcement.location.country}}</p>
+            <div *ngFor="let rent of rents" class="card">
+                <div class="click-card">
+                    <img src="{{rent.cover}}" alt="No Photo">
+                    <div class="heading-p">
+                        <p>{{rent.location.city}},</p>
+                        <p>{{rent.location.country}}</p>
+                    </div>
+                    <p>Posted on {{rent.date.endsWith(':00.000Z') ? rent.date.slice(0, 10) : rent.date}}</p>
+                    <p>{{rent.price}} € night</p>
                 </div>
-                <p>Posted on {{announcement.date.endsWith(':00.000Z') ? announcement.date.slice(0, 10) : announcement.date}}</p>
-                <p>{{announcement.price}} € night</p>
             </div>
         </div>
     </div>

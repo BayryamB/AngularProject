@@ -1,8 +1,19 @@
+
 .fixed-size {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+    padding: 2em 0em;
 }
+
+.announcement {
+    background-color: #f0f0f0;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
 
 .content {
     display: flex;

@@ -10,13 +10,18 @@ import { Router } from '@angular/router';
 })
 export class RentsListComponent implements OnInit {
   isLoaded: boolean = false;
+  isMainPage: boolean = true;
   rents: Rent[] = [];
   constructor(private api: ApiService, private router: Router) {}
   ngOnInit(): void {
+    if (this.router.url === '/rents') {
+      this.isMainPage = false;
+    }
     this.api.getRents().subscribe((rents) => {
       this.rents = rents;
       this.isLoaded = true;
     });
+
     return;
   }
 

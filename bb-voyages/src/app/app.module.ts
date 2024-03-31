@@ -12,9 +12,10 @@ import { RentsModule } from './rents/rents.module';
 import { OffersModule } from './offers/offers.module';
 import { FormsModule } from '@angular/forms';
 import { DestinationsModule } from './destinations/destinations.module';
+import { MainPageComponent } from './main-page/main-page.component';
 
 @NgModule({
-  declarations: [AppComponent, BookingListComponent],
+  declarations: [AppComponent, BookingListComponent, MainPageComponent],
   imports: [
     BrowserModule,
     CoreModule,
