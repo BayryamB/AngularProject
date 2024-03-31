@@ -3,4 +3,6 @@ export interface Destination {
   country: string;
   description: string;
   photos: string[];
+  _id: string;
+  __v: number;
 }

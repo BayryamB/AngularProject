@@ -5,7 +5,7 @@
                 <app-loader></app-loader>
             </div>
             <div *ngFor="let destination of destinations" class="card">
-                <div class="click-card">
+                <div (click)="navigateSingleDestination(destination)" class="click-card">
                     <img src="{{destination.photos[0]}}" alt="No Photo">
                     <div class="heading-p">
                         <p>{{destination.name}},</p>

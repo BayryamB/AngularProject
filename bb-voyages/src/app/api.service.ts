@@ -33,6 +33,11 @@ export class ApiService {
     return this.http.get<Rent>(`${apiUrl}/rents/${id}`);
   }
 
+  getSingleDestination(id: string) {
+    const { apiUrl } = environment;
+    return this.http.get<Destination>(`${apiUrl}/destinations/${id}`);
+  }
+
   addRent(rent: sendRent | undefined) {
     const { apiUrl } = environment;
     const url = `${apiUrl}/rents`;

@@ -1,1 +1,23 @@
-<p>current-destination works!</p>
+<div class="container">
+    <div class="fixed-size">
+        <div class="content">
+            <div class="card">
+                <div class="main-photo">
+                    <img src="{{photos[0]}}" alt="No Photo">
+                </div>
+                <div class="photos">
+                    <img src="{{photos[1]}}" alt="No Photo">
+                    <img src="{{photos[2]}}" alt="No Photo">
+                    <img src="{{photos[3]}}" alt="No Photo">
+                </div>
+                <div class="heading-p">
+                    <p>{{destination?.name}},</p>
+                    <p>{{destination?.country}}</p>
+                </div>
+                <div class="description">
+                    <p>{{destination?.description}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

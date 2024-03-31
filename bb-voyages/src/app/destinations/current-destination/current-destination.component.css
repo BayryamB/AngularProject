@@ -1,0 +1,50 @@
+.fixed-size {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.content {
+    margin: 1em 0em;
+}
+
+.main-photo {
+    margin: 1em 0em;
+}
+
+img {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.5);
+}
+
+.main-photo img{
+    max-width: 1200px;
+    aspect-ratio: 3;
+    border-radius: 0.5em;
+    object-fit: cover;
+}
+
+.photos {
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.photos img{
+    max-width: 380px;
+    aspect-ratio: 1;
+    border-radius: 0.5em;
+    object-fit: cover;
+}
+
+.heading-p {
+    display: flex;
+    gap: 0.5em;
+    font-size: 1.6em;
+    margin: 1em 0em;
+}
+
+.description p{
+    font-size: 1.2em;
+    line-height: 1.5em;
+    text-align: justify;
+    font-family: 'Helvetica', sans-serif;
+}
