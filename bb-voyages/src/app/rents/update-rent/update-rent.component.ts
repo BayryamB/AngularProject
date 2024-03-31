@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/api.service';
 import { Rent } from 'src/app/types/rent';
@@ -26,7 +27,6 @@ export class UpdateRentComponent {
     this.rentId = this.route.snapshot.paramMap.get('id') || '';
     this.api.getSingleRent(this.rentId).subscribe((rent: Rent) => {
       this.rent = rent;
-      console.log(rent);
       if (this.rent.options) {
         if (this.rent.options.wifi) {
           this.isCheckedWifi = true;
@@ -63,20 +63,37 @@ export class UpdateRentComponent {
     this.isCheckedSmoking = !this.isCheckedSmoking;
   }
 
-  updateRentHandler(updateRentForm: any) {
-    const location = {
-      country: updateRentForm.value.country,
-      city: updateRentForm.value.city,
-    };
-    const cover = updateRentForm.value.cover;
-    const description = updateRentForm.value.description;
-    const highlights = updateRentForm.value.highlights;
-    const price = updateRentForm.value.price;
-    const photos = [
-      updateRentForm.value.photo1,
-      updateRentForm.value.photo2,
-      updateRentForm.value.photo3,
-    ];
+  updateRentHandler(updateRentForm: NgForm) {
+    const formValues = updateRentForm.value;
+    this.updatedRent = this.rent;
+    if (formValues.country !== '') {
+      this.updatedRent!.location!.country = formValues.country;
+    }
+    if (formValues.city !== '') {
+      this.updatedRent!.location!.city = formValues.city;
+    }
+    if (formValues.cover !== '') {
+      this.updatedRent!.cover = formValues.cover;
+    }
+    if (formValues.description !== '') {
+      this.updatedRent!.description = formValues.description;
+    }
+    if (formValues.highlights !== '') {
+      this.updatedRent!.highlights = formValues.highlights;
+    }
+    if (formValues.price !== '') {
+      this.updatedRent!.price = formValues.price;
+    }
+    if (formValues.photo1 !== '') {
+      this.updatedRent!.photos![0] = formValues.photo1;
+    }
+    if (formValues.photo2 !== '') {
+      this.updatedRent!.photos![1] = formValues.photo2;
+    }
+    if (formValues.photo3 !== '') {
+      this.updatedRent!.photos![2] = formValues.photo3;
+    }
+
     const options = {
       wifi: this.isCheckedWifi,
       parking: this.isCheckedParking,
@@ -84,23 +101,10 @@ export class UpdateRentComponent {
       pets: this.isCheckedPets,
       smoking: this.isCheckedSmoking,
     };
-    this.updatedRent = {
-      userId: this.rent?.userId!,
-      date: this.rent?.date!,
-      location: location,
-      cover: cover,
-      description: description,
-      highlights: highlights,
-      price: price,
-      photos: photos,
-      options,
-      _id: this.rent?._id!,
-      __v: this.rent?.__v!,
-    };
-    console.log(this.updatedRent);
+    this.updatedRent!.options = options;
+
     this.api.updateRent(this.rentId, this.updatedRent).subscribe(() => {
       this.router.navigate(['/rents']);
-      console.log('Rent updated successfully');
     });
   }
 }
