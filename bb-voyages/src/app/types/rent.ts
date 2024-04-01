@@ -9,7 +9,7 @@ export interface Rent {
   photos: string[];
   cover: string;
   description: string;
-  highlights: string[];
+  likes: string[];
   price: number;
   __v: number;
 }

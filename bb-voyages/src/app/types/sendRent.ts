@@ -8,7 +8,7 @@ export interface sendRent {
   photos: string[];
   cover: string;
   description: string;
-  highlights: string[];
+  likes: string[];
   price: number;
   options: options;
 }

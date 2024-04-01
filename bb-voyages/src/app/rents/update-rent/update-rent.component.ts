@@ -78,8 +78,8 @@ export class UpdateRentComponent {
     if (formValues.description !== '') {
       this.updatedRent!.description = formValues.description;
     }
-    if (formValues.highlights !== '') {
-      this.updatedRent!.highlights = formValues.highlights;
+    if (formValues.likes !== '') {
+      this.updatedRent!.likes = formValues.likes;
     }
     if (formValues.price !== '') {
       this.updatedRent!.price = formValues.price;

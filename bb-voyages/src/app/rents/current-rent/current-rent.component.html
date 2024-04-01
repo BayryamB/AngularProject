@@ -27,9 +27,20 @@
                         <p *ngIf="rent?.options?.smoking">Smoking Allowed<i class="fa-solid fa-check"></i></p>
                         <p *ngIf="!rent?.options?.smoking">Smoking Allowed<i class="fa-solid fa-x"></i></p>
                     </div>
-                    <div *ngIf="isOwner" class="buttons"> 
-                        <button (click)="updateRent()" >Edit</button>
-                        <button (click)="deleteRent()" class="del">Delete</button>
+                    <div class="likes">
+                        <p>Likes: <i class="fa-solid fa-heart"><span>{{rent?.likes?.length}}</span></i></p>
+                    </div>
+                    <div class="buttons">
+                        <div *ngIf="isLoggedIn && !isLiked" class="likeBtn">
+                            <button [disabled]="isLiked" (click)="likeRent()" class="like">Like: <i class="fa-solid fa-thumbs-up"></i></button>
+                        </div>
+                        <div *ngIf="isLoggedIn && isLiked" class="dislikeBtn">
+                            <button [disabled]="!isLiked" (click)="unlikeRent()" class="unlike">Unlike: <i class="fa-solid fa-thumbs-down"></i></button>
+                        </div>
+                        <div *ngIf="isOwner"> 
+                            <button (click)="updateRent()" >Edit</button>
+                            <button (click)="deleteRent()" class="del">Delete</button>
+                        </div>
                     </div>
                 </div>
             </div>

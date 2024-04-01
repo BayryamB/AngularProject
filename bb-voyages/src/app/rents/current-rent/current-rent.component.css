@@ -56,6 +56,15 @@
     color: rgb(255, 0, 0);
 }
 
+.likes i {
+    color: red;
+}
+
+.likes span {
+    padding-left: 0.5em;
+    color: aliceblue;
+}
+
 .buttons {
     display: flex;
     justify-content: space-around;

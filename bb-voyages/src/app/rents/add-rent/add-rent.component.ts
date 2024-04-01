@@ -28,7 +28,6 @@ export class AddRentComponent {
     };
     const cover = addRentForm.value.cover;
     const description = addRentForm.value.description;
-    const highlights = addRentForm.value.highlights;
     const price = addRentForm.value.price;
     const photos = [
       addRentForm.value.photo1,
@@ -57,7 +56,7 @@ export class AddRentComponent {
       location,
       cover,
       description,
-      highlights,
+      likes: [],
       price,
       photos,
       options,

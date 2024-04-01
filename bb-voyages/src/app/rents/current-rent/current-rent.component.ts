@@ -16,6 +16,9 @@ export class CurrentRentComponent {
   isLoaded: boolean = false;
   currentOptions: options | undefined = undefined;
   isOwner: boolean = false;
+  isLoggedIn: boolean = this.userService.isLoggedIn;
+  isLiked: boolean = false;
+  userId: string | undefined = this.userService.userId;
   constructor(
     private route: ActivatedRoute,
     private api: ApiService,
@@ -28,8 +31,10 @@ export class CurrentRentComponent {
       try {
         this.api.getSingleRent(id).subscribe((rent) => {
           this.rent = rent;
+          if (this.rent?.likes?.includes(this.userId || '')) {
+            this.isLiked = true;
+          }
           this.isLoaded = true;
-          //console.log(rent);
           this.currentOptions = rent.options;
           if (this.userService.userId === rent.userId) {
             this.isOwner = true;
@@ -39,6 +44,7 @@ export class CurrentRentComponent {
         console.log(error);
       }
     }
+    console.log(this.isLiked);
   }
   updateRent() {
     this.router.navigate(['/rents/edit', this.rent?._id]);
@@ -47,6 +53,22 @@ export class CurrentRentComponent {
   deleteRent() {
     this.api.deleteRent(this.rent?._id!).subscribe(() => {
       this.router.navigate(['/rents']);
+    });
+  }
+
+  likeRent() {
+    this.isLiked = true;
+    this.rent?.likes?.push(this.userId || '');
+    this.api.updateRent(this.rent?._id!, this.rent).subscribe(() => {
+      this.ngOnInit();
+    });
+  }
+
+  unlikeRent() {
+    this.isLiked = false;
+    this.rent?.likes?.splice(this.rent?.likes?.indexOf(this.userId || ''), 1);
+    this.api.updateRent(this.rent?._id!, this.rent).subscribe(() => {
+      this.ngOnInit();
     });
   }
 }

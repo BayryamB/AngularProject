@@ -40,7 +40,7 @@ const bookingSchema = new mongoose.Schema({
   photos: [String],
   cover: String,
   description: String,
-  highlights: [String],
+  likes: [String],
   price: Number,
   options: {
     wifi: Boolean,
@@ -73,7 +73,7 @@ const rentSchema = new mongoose.Schema({
   photos: [String],
   cover: String,
   description: String,
-  highlights: [String],
+  likes: [String],
   price: Number,
   options: {
     wifi: Boolean,
@@ -186,7 +186,7 @@ app.post("/api/bookings", async (req, res) => {
       photos: req.body.photos,
       cover: req.body.cover,
       description: req.body.description,
-      highlights: req.body.highlights,
+      likes: req.body.highlights,
       price: req.body.price,
       options: req.body.options,
       // Add more properties as needed
@@ -356,6 +356,40 @@ app.put("/api/rents/:id", async (req, res) => {
     res.status(200).json(rent);
   } catch (error) {
     res.status(500).json({ error: error.message });
+  }
+});
+
+// Add likes to a rent
+app.post("/api/rents/like/:id", async (req, res) => {
+  const { id } = req.params;
+  const { userId } = req.body;
+  try {
+    const rent = await Rent.findByIdAndUpdate(
+      id,
+      { $addToSet: { likes: userId } },
+      { new: true }
+    );
+    res.json(rent);
+  } catch (error) {
+    console.error("Error liking item:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
+// Remove likes from a rent
+app.post("/api/rents/dislike/:id", async (req, res) => {
+  const { id } = req.params;
+  const { userId } = req.body; // Access the userId from the request body
+  try {
+    const rent = await Rent.findByIdAndUpdate(
+      id,
+      { $pull: { likes: userId } },
+      { new: true }
+    );
+    res.json(rent);
+  } catch (error) {
+    console.error("Error disliking item:", error);
+    res.status(500).json({ error: "Internal server error" });
   }
 });
 
