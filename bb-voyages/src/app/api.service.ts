@@ -12,9 +12,37 @@ import { Destination } from './types/destination';
 export class ApiService {
   constructor(private http: HttpClient) {}
 
-  getBookings() {
+  getRentsShort() {
     const { apiUrl } = environment;
-    return this.http.get<Rent[]>(`${apiUrl}/bookings`);
+    return this.http.get<Rent[]>(`${apiUrl}/short`);
+  }
+  getSingleRentShort(id: string) {
+    const { apiUrl } = environment;
+    return this.http.get<Rent>(`${apiUrl}/short/${id}`);
+  }
+
+  addShortRent(rent: sendRent | undefined) {
+    const { apiUrl } = environment;
+    const url = `${apiUrl}/short`;
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+    return this.http.post(url, rent, { headers });
+  }
+
+  updateShortRent(id: string, rent: Rent | undefined) {
+    const { apiUrl } = environment;
+    const url = `${apiUrl}/short/${id}`;
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+    return this.http.put(url, rent, { headers });
+  }
+
+  deleteShortRent(id: string) {
+    const { apiUrl } = environment;
+    const url = `${apiUrl}/short/${id}`;
+    return this.http.delete(url);
   }
 
   getRents() {

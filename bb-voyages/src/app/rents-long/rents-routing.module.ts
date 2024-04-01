@@ -7,7 +7,6 @@ import { AuthActivate } from '../guards/auth.activate';
 import { UpdateRentComponent } from './update-rent/update-rent.component';
 
 const routes: Routes = [
-  { path: 'rent', component: CurrentRentComponent },
   {
     path: 'add-rent',
     component: AddRentComponent,

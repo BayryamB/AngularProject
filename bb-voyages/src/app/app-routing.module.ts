@@ -5,7 +5,7 @@ import { MainPageComponent } from './main-page/main-page.component';
 
 const routes: Routes = [
   { path: '', component: MainPageComponent },
-  { path: 'rents-short', component: RentsListComponentShort },
+  //{ path: 'rents-short', component: RentsListComponentShort },
   { path: '**', redirectTo: 'home' },
 ];
 

@@ -28,30 +28,6 @@ const userSchema = new mongoose.Schema({
 });
 const User = mongoose.model("User", userSchema);
 
-// Define booking schema
-const bookingSchema = new mongoose.Schema({
-  // Define properties of a booking record
-  userId: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
-  date: Date,
-  location: {
-    country: String,
-    city: String,
-  },
-  photos: [String],
-  cover: String,
-  description: String,
-  likes: [String],
-  price: Number,
-  options: {
-    wifi: Boolean,
-    parking: Boolean,
-    breakfast: Boolean,
-    pets: Boolean,
-    smoking: Boolean,
-  },
-
-  // Add more properties as needed
-});
 // Define Destination schema
 const destinationSchema = new mongoose.Schema({
   name: { type: String },
@@ -82,11 +58,8 @@ const rentSchema = new mongoose.Schema({
     pets: Boolean,
     smoking: Boolean,
   },
-  // Add more properties as needed
 });
 const Rent = mongoose.model("Rents", rentSchema);
-
-const Booking = mongoose.model("Booking", bookingSchema);
 
 // Middleware to parse JSON
 app.use(express.json());
@@ -174,73 +147,121 @@ app.put("/api/users/:id", async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 });
-
-// Add booking endpoint
-app.post("/api/bookings", async (req, res) => {
-  try {
-    // Create a new booking record
-    const booking = new Booking({
-      userId: req.body.userId,
-      date: req.body.date,
-      location: req.body.location,
-      photos: req.body.photos,
-      cover: req.body.cover,
-      description: req.body.description,
-      likes: req.body.highlights,
-      price: req.body.price,
-      options: req.body.options,
-      // Add more properties as needed
-    });
-
-    // Save the booking record to the database
-    await booking.save();
-
-    // Send a successful response
-    res.status(201).json({ message: "Booking created successfully" });
-  } catch (error) {
-    // Handle any errors
-    res.status(500).json({ error: error.message });
-  }
+const rentShortSchema = new mongoose.Schema({
+  userId: { type: mongoose.Schema.Types.ObjectId, ref: "User" }, // Reference to the user who rented
+  date: { type: Date, default: Date.now }, // Date of the rent (default to current date)
+  location: {
+    country: String,
+    city: String,
+  },
+  photos: [String],
+  cover: String,
+  description: String,
+  likes: [String],
+  price: Number,
+  options: {
+    wifi: Boolean,
+    parking: Boolean,
+    breakfast: Boolean,
+    pets: Boolean,
+    smoking: Boolean,
+  },
 });
+const RentShort = mongoose.model("RentsShort", rentShortSchema);
 
-// Get all bookings endpoint
-app.get("/api/bookings", async (req, res) => {
+// Route handlers
+// Get all rents-short
+app.get("/api/short", async (req, res) => {
   try {
-    // Retrieve all booking records from the database
-    const bookings = await Booking.find();
-
-    // Send the booking records as a response
-    res.status(200).json(bookings);
-  } catch (error) {
-    // Handle any errors
-    res.status(500).json({ error: error.message });
-  }
-});
-// Get 5 most recent bookings
-app.get("/api/bookings/recent", async (req, res) => {
-  try {
-    const recentThemes = await Booking.find().sort({ createdAt: -1 }).limit(4);
-    res.status(200).json(recentBookings);
+    const rents = await RentShort.find();
+    res.status(200).json(rents);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
 });
 
-// Define a route to retrieve a specific booking by ID
-app.get("/api/bookings/:id", async (req, res) => {
+// Get a single rent by ID
+app.get("/api/short/:id", async (req, res) => {
   try {
-    // Retrieve the booking with the specified ID from the database
-    const booking = await Booking.findById(req.params.id);
-
-    // Check if the booking exists
-    if (!booking) {
-      return res.status(404).json({ message: "Booking not found" });
+    const rent = await RentShort.findById(req.params.id);
+    if (!rent) {
+      return res.status(404).json({ message: "Rent not found" });
     }
-
-    // Send the booking as a response
-    res.status(200).json(booking);
+    res.status(200).json(rent);
   } catch (error) {
-    // Handle any errors
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Create a new rent
+app.post("/api/short", async (req, res) => {
+  try {
+    const rent = new RentShort(req.body);
+    await rent.save();
+    res.status(201).json(rent);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Update an existing rent
+app.put("/api/short/:id", async (req, res) => {
+  try {
+    const rent = await RentShort.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+    });
+    if (!rent) {
+      return res.status(404).json({ message: "Rent not found" });
+    }
+    res.status(200).json(rent);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Add likes to a rent
+app.post("/api/short/like/:id", async (req, res) => {
+  const { id } = req.params;
+  const { userId } = req.body;
+  try {
+    const rent = await RentShort.findByIdAndUpdate(
+      id,
+      { $addToSet: { likes: userId } },
+      { new: true }
+    );
+    res.json(rent);
+  } catch (error) {
+    console.error("Error liking item:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
+// Remove likes from a rent
+app.post("/api/short/dislike/:id", async (req, res) => {
+  const { id } = req.params;
+  const { userId } = req.body; // Access the userId from the request body
+  try {
+    const rent = await RentShort.findByIdAndUpdate(
+      id,
+      { $pull: { likes: userId } },
+      { new: true }
+    );
+    res.json(rent);
+  } catch (error) {
+    console.error("Error disliking item:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
+// Delete a rent
+app.delete("/api/short/:id", async (req, res) => {
+  try {
+    const rent = await RentShort.findByIdAndDelete(req.params.id);
+    if (!rent) {
+      return res.status(404).json({ message: "Rent not found" });
+    }
+    res.status(204).end(); // No content
+  } catch (error) {
     res.status(500).json({ error: error.message });
   }
 });

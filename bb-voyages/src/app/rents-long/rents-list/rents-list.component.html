@@ -1,33 +1,58 @@
 <div class="container">
     <div class="fixed-size">
         <div class="content">
-            <div *ngIf="!isMainPage" class="welcome-message">
-                <h1>Welcome to Our Long-Term Rentals!</h1>
-                <p>Embark on a journey of extended stays and discover the perfect home away from home. Whether you're relocating for work, exploring a new city, or simply seeking a change of scenery, we're here to make your stay unforgettable.</p>
-                <p>Enjoy the comforts of home combined with exclusive perks and a sense of community. Browse our selection of long-term rental options and find the perfect living space for your needs.</p>
+            <div *ngIf="!isMainPage">
+                <div class="create-msg">
+                    <h3>Ready to list your space?</h3>
+                    <p>Ready to turn your space into a thriving rental? Listing your property is the first step towards
+                        unlocking its full potential. Whether you have a spare room or an entire home, our platform
+                        makes it easy to connect with travelers and earn extra income.</p>
+                    <p>Creating a rental listing is quick and hassle-free. Simply provide some basic information about
+                        your property, upload captivating photos, and set your desired price. Our user-friendly
+                        interface guides you through the process, ensuring that your listing stands out to potential
+                        guests.</p>
+                    <button (click)="navigateToCreate()">Create Your Rental!</button>
+                </div>
+                <div class="welcome-message">
+                    <h1>Welcome to Our Long-Term Rentals!</h1>
+                    <p>
+                        Embark on a journey of extended stays and discover the perfect home
+                        away from home. Whether you're relocating for work, exploring a new
+                        city, or simply seeking a change of scenery, we're here to make your
+                        stay unforgettable.
+                    </p>
+                    <p>
+                        Enjoy the comforts of home combined with exclusive perks and a sense
+                        of community. Browse our selection of long-term rental options and
+                        find the perfect living space for your needs.
+                    </p>
+                </div>
             </div>
             <div *ngIf="!isLoaded" class="loader">
                 <app-loader></app-loader>
             </div>
             <div *ngFor="let rent of rents" class="card">
                 <div (click)="clickCard(rent)" class="click-card">
-                    <img src="{{rent.cover}}" alt="No Photo">
+                    <img src="{{ rent.cover }}" alt="No Photo" />
                     <div class="heading-p">
-                        <p>{{rent.location.city}},</p>
-                        <p>{{rent.location.country}}</p>
+                        <p>{{ rent.location.city }},</p>
+                        <p>{{ rent.location.country }}</p>
                     </div>
-                    <p>Posted on {{rent.date.endsWith(':00.000Z') ? rent.date.slice(0, 10) : rent.date}}</p>
-                    <p>{{rent.price}} € month</p>
+                    <p>
+                        Posted on
+                        {{
+                        rent.date.endsWith(":00.000Z")
+                        ? rent.date.slice(0, 10)
+                        : rent.date
+                        }}
+                    </p>
+                    <p>{{ rent.price }} € month</p>
                 </div>
             </div>
             <div *ngIf="rents.length < 1" class="no-rents">
                 <h1>No Rents</h1>
                 <p>No Rents Available</p>
             </div>
-        </div>
-        <div class="create-msg">
-            <h3>Ready to list your space?</h3>
-            <button (click)="navigateToCreate()">Create your rental now!</button>
         </div>
     </div>
 </div>

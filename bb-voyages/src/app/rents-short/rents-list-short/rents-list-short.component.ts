@@ -14,12 +14,20 @@ export class RentsListComponentShort implements OnInit {
   isMainPage: boolean = true;
   constructor(private api: ApiService, private router: Router) {}
   ngOnInit(): void {
-    if (this.router.url === '/bookings') {
+    if (this.router.url === '/rents-short') {
       this.isMainPage = false;
     }
-    this.api.getBookings().subscribe((rents) => {
+    this.api.getRentsShort().subscribe((rents) => {
       this.rents = rents;
       this.isLoaded = true;
     });
+  }
+
+  navigateSingleRent(rent: Rent) {
+    this.router.navigate(['/rents-short', rent._id]);
+  }
+
+  navigateToCreate() {
+    this.router.navigate(['/add-rent-short']);
   }
 }

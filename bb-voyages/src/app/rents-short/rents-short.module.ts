@@ -6,6 +6,8 @@ import { CurrentRentShortComponent } from './current-rent-short/current-rent-sho
 import { AddRentShortComponent } from './add-rent-short/add-rent-short.component';
 import { UpdateRentShortComponent } from './update-rent-short/update-rent-short.component';
 import { RentsRoutingModule } from '../rents-long/rents-routing.module';
+import { RentsShortRoutingModule } from './rents-short-routing.module';
+import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     RentsListComponentShort,
@@ -13,7 +15,7 @@ import { RentsRoutingModule } from '../rents-long/rents-routing.module';
     AddRentShortComponent,
     UpdateRentShortComponent,
   ],
-  imports: [CommonModule, SharedModule, RentsRoutingModule],
-  exports: [RentsListComponentShort],
+  imports: [CommonModule, SharedModule, RentsRoutingModule, FormsModule],
+  exports: [RentsListComponentShort, RentsShortRoutingModule],
 })
 export class RentsShortModule {}

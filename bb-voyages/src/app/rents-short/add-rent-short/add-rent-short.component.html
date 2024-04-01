@@ -1,1 +1,49 @@
-<p>add-rent-short works!</p>
+<div class="container">
+    <div class="fixed-size">
+        <div class="create-rental-message">
+            <h1>Create Your Rental</h1>
+            <p>Ready to share your space with others? Start creating your rental listing now and reach potential guests from around the world.</p>
+            <p>Whether you have a spare room, an entire apartment, or a vacation home, we make it easy to list your property and start earning income from short-term or long-term rentals.</p>
+        </div>
+        <form #addRentShortForm="ngForm" (ngSubmit)="addRentHandler(addRentShortForm)">
+            <div class="create-rent-form">
+                <div class="input-group">
+                    <label for="country">Country:</label>
+                    <input type="text" id="country" name="country" placeholder="ex: Italy" required ngModel>
+                    <label for="city">City:</label>
+                    <input type="text" id="city" name="city" placeholder="ex: Rome" required ngModel>
+                </div>
+                <div class="input-photos">
+                    <!-- Add input type="file" -->
+                    <!-- <input type="file" id="photos" name="photos" multiple> -->
+                    <div class="photos">
+                        <h3>Add Photos</h3>
+                        <div class="main-photo">
+                        <input type="text" id="cover" name="cover" placeholder="Main Photo"required multiple ngModel>
+                        </div>
+                        <input type="text" id="photo1" name="photo1" placeholder="Photo 1" multiple ngModel>
+                        <input type="text" id="photo2" name="photo2" placeholder="Photo 2" multiple ngModel>
+                        <input type="text" id="photo3" name="photo3" placeholder="Photo 3" multiple ngModel>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label for="description">Description:</label>
+                    <textarea id="description" name="description" required ngModel></textarea>
+                </div>
+                <div class="input-group">
+                    <label for="price">Price: € per night</label>
+                    <input type="number" id="price" name="price" required ngModel>
+                </div>
+                <div class="input-options">
+                    <h2>Options</h2>
+                    <label><input type="checkbox" name="wifi" ngModel> Wifi</label><br>
+                    <label><input type="checkbox" name="parking" ngModel> Parking</label><br>
+                    <label><input type="checkbox" name="breakfast" ngModel> Breakfast</label><br>
+                    <label><input type="checkbox" name="pets" ngModel> Pets Allowed</label><br>
+                    <label><input type="checkbox" name="smoking" ngModel> Smoking Allowed</label><br>
+                </div>
+                <button >Add Rent</button>
+            </div>
+        </form>
+    </div>
+</div>
