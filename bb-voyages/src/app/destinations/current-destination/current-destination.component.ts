@@ -17,7 +17,6 @@ export class CurrentDestinationComponent {
       this.api.getSingleDestination(id).subscribe((destination) => {
         this.destination = destination!;
         this.photos = destination.photos;
-        console.log(this.destination);
       });
     }
   }

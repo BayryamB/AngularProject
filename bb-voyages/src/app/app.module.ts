@@ -6,16 +6,15 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { UserModule } from './user/user.module';
 import { SharedModule } from './shared/shared.module';
-import { BookingListComponent } from './booking-list/booking-list.component';
 import { HttpClientModule } from '@angular/common/http';
-import { RentsModule } from './rents/rents.module';
+import { RentsModule } from './rents-long/rents.module';
 import { OffersModule } from './offers/offers.module';
 import { FormsModule } from '@angular/forms';
 import { DestinationsModule } from './destinations/destinations.module';
 import { MainPageComponent } from './main-page/main-page.component';
-
+import { RentsShortModule } from './rents-short/rents-short.module';
 @NgModule({
-  declarations: [AppComponent, BookingListComponent, MainPageComponent],
+  declarations: [AppComponent, MainPageComponent],
   imports: [
     BrowserModule,
     CoreModule,
@@ -23,6 +22,7 @@ import { MainPageComponent } from './main-page/main-page.component';
     SharedModule,
     HttpClientModule,
     RentsModule,
+    RentsShortModule,
     OffersModule,
     DestinationsModule,
     FormsModule,

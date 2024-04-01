@@ -44,7 +44,6 @@ export class CurrentRentComponent {
         console.log(error);
       }
     }
-    console.log(this.isLiked);
   }
   updateRent() {
     this.router.navigate(['/rents/edit', this.rent?._id]);

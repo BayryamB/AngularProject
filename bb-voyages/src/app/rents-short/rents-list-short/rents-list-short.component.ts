@@ -1,16 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from '../api.service';
-import { LoaderComponent } from '../shared/loader/loader.component';
-import { RentsListComponent } from '../rents/rents-list/rents-list.component';
-import { Rent } from '../types/rent';
+import { ApiService } from '../../api.service';
+import { Rent } from '../../types/rent';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-booking-list',
-  templateUrl: './booking-list.component.html',
-  styleUrls: ['./booking-list.component.css'],
+  selector: 'app-rents-list-short',
+  templateUrl: './rents-list-short.component.html',
+  styleUrls: ['./rents-list-short.component.css'],
 })
-export class BookingListComponent implements OnInit {
+export class RentsListComponentShort implements OnInit {
   rents: Rent[] = [];
   isLoaded: boolean = false;
   isMainPage: boolean = true;
