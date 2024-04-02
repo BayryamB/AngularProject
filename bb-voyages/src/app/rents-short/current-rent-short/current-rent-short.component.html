@@ -6,7 +6,15 @@
             </div>
             <div *ngIf="isLoaded" class="card">
                 <h2>{{rent?.location?.city}}, {{rent?.location?.country}}</h2>
-                <img src="{{rent?.cover}}" alt="No Photo">
+                <div class="photo-wall">
+                    <img src="{{rent?.cover}}" alt="No Photo">
+                    <div class="photos-container">
+                        <div *ngFor="let photo of rent?.photos" class="other-photos">
+                            <img *ngIf="photo!==''" src="{{photo}}" alt="No Photo">
+                        </div>
+                    </div>
+                </div>
+                
                 <div class="info">
                     <div class="text">
                         <h3>Information</h3>

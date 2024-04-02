@@ -38,15 +38,17 @@
                         <p>{{ rent.location.city }},</p>
                         <p>{{ rent.location.country }}</p>
                     </div>
-                    <p>
-                        Posted on
-                        {{
-                        rent.date.endsWith(":00.000Z")
-                        ? rent.date.slice(0, 10)
-                        : rent.date
-                        }}
-                    </p>
-                    <p>{{ rent.price }} € month</p>
+                    <div class="date">
+                        <p>
+                            Posted on
+                            {{
+                            rent.date.endsWith(":00.000Z")
+                            ? rent.date.slice(0, 10)
+                            : rent.date
+                            }}
+                        </p>
+                        <p>{{ rent.price }} € month</p>
+                    </div>
                 </div>
             </div>
             <div *ngIf="rents.length < 1" class="no-rents">

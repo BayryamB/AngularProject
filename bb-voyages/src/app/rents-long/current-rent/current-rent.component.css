@@ -9,7 +9,7 @@
 
 
 .card {
-    margin: 0 auto;
+    margin: 2em 0em;
     padding: 2em;
     background-color: #0b89ddb0;
     border-radius: 0.5em;
@@ -24,17 +24,35 @@
     flex: 0 0 100%;
 }
 
+.photo-wall {
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+}
+
 .card img {
-    object-fit: fill;
+    object-fit: cover;
     width: 60%;
     height: auto;
     border-radius: 0.5em;
 }
 
-.info {
-    margin-left: 1em;
+.photos-container {
     display: flex;
     flex-direction: column;
+    gap: 1em;
+}
+
+.other-photos img {
+    width: 300px;
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+}
+
+.info {
+    margin-top: 2em;
+    display: flex;
+    flex-direction: row;
     gap: 2em;
 }
 
