@@ -6,3 +6,32 @@
     flex-direction: column;
     margin-top: 2.5em;
 }
+
+.announcement {
+    margin: 0 auto;
+    width: 600px;
+    border-radius: 2em;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    padding: 2em;
+    text-align: center;
+}
+
+.announcement p {
+    margin: 1em 2em;
+}
+
+.announcement button {
+    cursor: pointer;
+    background-color: #4A99E1;
+    width: 150px;
+    height: 50px;
+    border-radius: 1em;
+    border: none;
+    color: rgb(221, 221, 221);
+    font-family: 'Helvetica', sans-serif;
+    font-size: 1.2em;
+    padding: 0.5em;
+    margin: 0 auto;
+    font-weight: bold;
+    
+}

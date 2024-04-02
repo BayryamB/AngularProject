@@ -1,7 +1,4 @@
 .container {
-    background-image: url('../../../assets/mountains-1899264_1920.jpg');
-    background-size: cover;
-    background-position: center;
     color: rgb(221, 221, 221);
     font-family: 'Helvetica', sans-serif;
     padding: 0 50px;
@@ -23,6 +20,15 @@
     text-align: center;
   }
   
+  .reg-align .input-group{
+    display: flex;
+    width: 250px;
+  }
+
+  .reg-align input{
+    width: 100%;
+  }
+
   .register-form h2 {
     text-align: center;
     padding-bottom: 1em;

@@ -2,16 +2,19 @@
     <div class="fixed-size">
         <div class="create-rental-message">
             <h1>Create Your Rental</h1>
-            <p>Ready to share your space with others? Start creating your rental listing now and reach potential guests from around the world.</p>
-            <p>Whether you have a spare room, an entire apartment, or a vacation home, we make it easy to list your property and start earning income from short-term or long-term rentals.</p>
+            <p>Start creating your rental listing now and reach potential guests from around the world.</p>
+            <p>Whether you have a spare room, an entire apartment, or a vacation home, we make it easy to list your property.</p>
         </div>
         <form #addRentForm="ngForm" (ngSubmit)="addRentHandler(addRentForm)">
             <div class="create-rent-form">
                 <div class="input-group">
-                    <label for="country">Country:</label>
-                    <input type="text" id="country" name="country" placeholder="ex: Italy" required ngModel>
-                    <label for="city">City:</label>
-                    <input type="text" id="city" name="city" placeholder="ex: Rome" required ngModel>
+                    <div class="location">
+                        <h3>Choose Location</h3>
+                        <label for="country">Country:</label>
+                        <input type="text" id="country" name="country" placeholder="ex: Italy" required ngModel>
+                        <label for="city">City:</label>
+                        <input type="text" id="city" name="city" placeholder="ex: Rome" required ngModel>
+                    </div>
                 </div>
                 <div class="input-photos">
                     <!-- Add input type="file" -->
@@ -35,14 +38,19 @@
                     <input type="number" id="price" name="price" required ngModel>
                 </div>
                 <div class="input-options">
-                    <h2>Options</h2>
+                    <h3>Add Options</h3>
                     <label><input type="checkbox" name="wifi" ngModel> Wifi</label><br>
                     <label><input type="checkbox" name="parking" ngModel> Parking</label><br>
                     <label><input type="checkbox" name="breakfast" ngModel> Breakfast</label><br>
                     <label><input type="checkbox" name="pets" ngModel> Pets Allowed</label><br>
                     <label><input type="checkbox" name="smoking" ngModel> Smoking Allowed</label><br>
                 </div>
-                <button >Add Rent</button>
+                <div *ngIf="addRentForm.invalid && (addRentForm.dirty || addRentForm.touched)" class="error-message">
+                    Please fill out all required fields.
+                </div>
+                <div [ngClass]="{'button-disabled': addRentForm.invalid, 'button-enabled': !addRentForm.invalid}">
+                    <button [disabled]="addRentForm.invalid" >Add Rent</button>
+                </div>
             </div>
         </form>
     </div>

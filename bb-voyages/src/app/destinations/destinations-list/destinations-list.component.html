@@ -1,5 +1,10 @@
 <div class="container">
     <div class="fixed-size">
+        <div class="welcome-msg">
+            <h2>Welcome to Our Destinations Page!</h2>
+            <p>Embark on a journey of discovery as you explore our curated selection of destinations. From vibrant cities to tranquil retreats, we invite you to wanderlust with us and uncover the beauty of each destination. Whether you're seeking adventure, relaxation, or cultural immersion, our destinations offer something for every traveler.</p>
+            <p>Browse through our collection of handpicked destinations, each with its own unique charm and allure. Get inspired, plan your next getaway, and make unforgettable memories along the way. Let the journey begin!</p>
+        </div>
         <div class="content">
             <div *ngIf="!isLoaded" class="loader">
                 <app-loader></app-loader>
@@ -14,6 +19,9 @@
                     <div class="description">
                         <p>{{destination.description}}</p>
                     </div>
+                </div>
+                <div *ngIf="destinations===undefined || destinations.length===0" class="no-destinations">
+                    <h2>No Destinations Found</h2>
                 </div>
             </div>
         </div>

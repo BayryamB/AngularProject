@@ -1,18 +1,7 @@
 <div class="container">
     <div class="fixed-size">
         <div class="content">
-            <div *ngIf="!isMainPage">
-                <div class="create-msg">
-                    <h3>Ready to list your space?</h3>
-                    <p>Ready to turn your space into a thriving rental? Listing your property is the first step towards
-                        unlocking its full potential. Whether you have a spare room or an entire home, our platform
-                        makes it easy to connect with travelers and earn extra income.</p>
-                    <p>Creating a rental listing is quick and hassle-free. Simply provide some basic information about
-                        your property, upload captivating photos, and set your desired price. Our user-friendly
-                        interface guides you through the process, ensuring that your listing stands out to potential
-                        guests.</p>
-                    <button (click)="navigateToCreate()">Create Your Rental!</button>
-                </div>
+            <div *ngIf="!isMainPage" class="welcome-info">
                 <div class="welcome-message">
                     <h1>Welcome to Our Long-Term Rentals!</h1>
                     <p>
@@ -26,6 +15,17 @@
                         of community. Browse our selection of long-term rental options and
                         find the perfect living space for your needs.
                     </p>
+                </div>
+                <div class="create-msg">
+                    <h3>Ready to list your space?</h3>
+                    <p>Listing your property is the first step towards
+                        unlocking its full potential. Whether you have a spare room or an entire home, our platform
+                        makes it easy to connect with travelers and earn extra income.</p>
+                    <p>Creating a rental listing is quick and hassle-free. Simply provide some basic information about
+                        your property, upload captivating photos, and set your desired price. Our user-friendly
+                        interface guides you through the process, ensuring that your listing stands out to potential
+                        guests.</p>
+                    <button (click)="navigateToCreate()">Create Your Rental!</button>
                 </div>
             </div>
             <div *ngIf="!isLoaded" class="loader">

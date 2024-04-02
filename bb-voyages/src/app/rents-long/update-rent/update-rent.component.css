@@ -1,7 +1,4 @@
 .container {
-    background-image: url('../../../assets/add-rent-background.jpg');
-    background-size: cover;
-    background-position: center;
     color: rgb(43, 39, 39);
 }
 .fixed-size {
@@ -14,9 +11,14 @@
 .create-rent-form {
     display: flex;
     flex-direction: column;
-    gap: 1em;
+    padding: 2em;
+    border-radius: 2em;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    background-color: #a3ceec96;
+    gap: 2em;
     text-align: center;
-    
+    max-width: 50em;
+    margin: 0 auto;
 }
 
 .create-rent-form input, .create-rent-form textarea {
@@ -33,7 +35,23 @@
 
 .input-photos {
     margin: 0 auto;
-    text-align: left;
+    text-align: center;
+}
+
+.create-rental-message p {
+    margin-bottom: 1em;
+}
+
+.create-rental-message {
+    font-family: 'Shantell Sans', sans-serif;
+    font-size: 1.2em;
+    background-color: #d1c0eb7c;
+    border-radius: 2em;
+    padding: 2em;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    max-width: 50em;
+    margin: 0 auto;
+    margin-bottom: 2em;
 }
 
 .create-rent-form textarea{
@@ -50,8 +68,9 @@
     text-align: left;
 }
 
-.create-rent-form button {
-    background-color: transparent;
+.button-enabled button{
+    background-color: rgba(6, 255, 89, 0.507);
+    cursor: pointer;
     border: 2px solid rgb(43, 39, 39);
     border-radius: 2em;
     color: rgb(43, 39, 39);
@@ -63,10 +82,23 @@
     font-weight: bold;
 }
 
-.create-rent-form button:hover {
-    background-color: rgb(43, 39, 39);
-    color: rgb(255, 255, 255);
-    cursor: pointer;
+.button-disabled button{
+    background-color: rgba(255, 0, 0, 0.507);
+    cursor: not-allowed;
+    border: 2px solid rgb(43, 39, 39);
+    border-radius: 2em;
+    color: rgb(43, 39, 39);
+    font-family: 'Helvetica', sans-serif;
+    font-size: 1.2em;
+    padding: 0.5em;
+    width: 200px;
+    margin: 0 auto;
+    font-weight: bold;
+}
+
+.error-message {
+    color: rgba(255, 0, 0, 0.5);
+    font-weight: bold;
 }
 
 input.ng-invalid.ng-touched, textarea.ng-invalid.ng-touched {

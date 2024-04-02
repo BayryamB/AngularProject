@@ -35,6 +35,10 @@ img {
     object-fit: cover;
 }
 
+.info {
+    font-family: Shantell, Sans;
+}
+
 .heading-p {
     display: flex;
     gap: 0.5em;

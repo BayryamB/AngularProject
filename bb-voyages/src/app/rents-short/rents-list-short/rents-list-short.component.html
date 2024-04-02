@@ -1,17 +1,17 @@
 <div class="container">
     <div class="fixed-size">
         <div class="content">
-            <div *ngIf="!isMainPage">
-                <div class="create-msg">
-                    <h3>Ready to list your space?</h3>
-                    <p>Ready to share your space with travelers? Creating a short-term rental listing is a fantastic way to turn your property into a lucrative opportunity. Whether you have an extra room or an entire home, listing on our platform opens doors to earning extra income and meeting new people from all over the world.</p>
-                    <p>Getting started is easy! Simply provide some details about your property, upload captivating photos, and set your availability and pricing. Our intuitive platform guides you through the process, ensuring your listing stands out to potential guests. Start hosting today and embark on a rewarding journey as a short-term rental host!</p>
-                    <button (click)="navigateToCreate()">Create Your Rental!</button>
-                </div>
+            <div *ngIf="!isMainPage" class="welcome-info">
                 <div class="welcome-message">
                     <h1>Welcome to Our Short-Term Rentals!</h1>
-                <p>Get ready for your next adventure with our short-term rental options. Whether you're planning a weekend getaway, a spontaneous trip, or just need a temporary place to stay, we have you covered.</p>
-                <p>Explore our selection of short-term rentals and discover the perfect accommodations for your trip. Enjoy flexibility, comfort, and convenience as you embark on your journey.</p>
+                    <p>Get ready for your next adventure with our short-term rental options. Whether you're planning a weekend getaway, a spontaneous trip, or just need a temporary place to stay, we have you covered.</p>
+                    <p>Explore our selection of short-term rentals and discover the perfect accommodations for your trip. Enjoy flexibility, comfort, and convenience as you embark on your journey.</p>
+                </div>
+                <div class="create-msg">
+                    <h3>Ready to list your space?</h3>
+                    <p>Creating a short-term rental listing is a fantastic way to turn your property into an opportunity. Whether you have an extra room or an entire home, listing on our platform and meeting new people from all over the world.</p>
+                    <p>Getting started is easy! Simply provide some details about your property. Start hosting short-term rental!</p>
+                    <button (click)="navigateToCreate()">Create Your Rental!</button>
                 </div>
             </div>
             <div *ngIf="!isLoaded" class="loader">

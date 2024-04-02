@@ -8,10 +8,13 @@
         <form #addRentShortForm="ngForm" (ngSubmit)="addRentHandler(addRentShortForm)">
             <div class="create-rent-form">
                 <div class="input-group">
-                    <label for="country">Country:</label>
-                    <input type="text" id="country" name="country" placeholder="ex: Italy" required ngModel>
-                    <label for="city">City:</label>
-                    <input type="text" id="city" name="city" placeholder="ex: Rome" required ngModel>
+                    <div class="location">
+                        <h3>Choose Location</h3>
+                        <label for="country">Country:</label>
+                        <input type="text" id="country" name="country" placeholder="ex: Italy" required ngModel>
+                        <label for="city">City:</label>
+                        <input type="text" id="city" name="city" placeholder="ex: Rome" required ngModel>
+                    </div>
                 </div>
                 <div class="input-photos">
                     <!-- Add input type="file" -->
@@ -35,14 +38,19 @@
                     <input type="number" id="price" name="price" required ngModel>
                 </div>
                 <div class="input-options">
-                    <h2>Options</h2>
+                    <h3>Add Options</h3>
                     <label><input type="checkbox" name="wifi" ngModel> Wifi</label><br>
                     <label><input type="checkbox" name="parking" ngModel> Parking</label><br>
                     <label><input type="checkbox" name="breakfast" ngModel> Breakfast</label><br>
                     <label><input type="checkbox" name="pets" ngModel> Pets Allowed</label><br>
                     <label><input type="checkbox" name="smoking" ngModel> Smoking Allowed</label><br>
                 </div>
-                <button >Add Rent</button>
+                <div *ngIf="addRentShortForm.invalid && (addRentShortForm.dirty || addRentShortForm.touched)" class="error-message">
+                    Please fill out all required fields.
+                </div>
+                <div [ngClass]="{'button-disabled': addRentShortForm.invalid, 'button-enabled': !addRentShortForm.invalid}">
+                    <button [disabled]="addRentShortForm.invalid" >Add Rent</button>
+                </div>
             </div>
         </form>
     </div>

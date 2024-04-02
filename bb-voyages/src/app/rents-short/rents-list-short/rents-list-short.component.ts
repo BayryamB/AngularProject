@@ -18,7 +18,11 @@ export class RentsListComponentShort implements OnInit {
       this.isMainPage = false;
     }
     this.api.getRentsShort().subscribe((rents) => {
-      this.rents = rents;
+      if (this.isMainPage) {
+        this.rents = rents.slice(0, 4);
+      } else {
+        this.rents = rents;
+      }
       this.isLoaded = true;
     });
   }
