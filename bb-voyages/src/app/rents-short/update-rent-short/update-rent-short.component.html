@@ -1,1 +1,161 @@
-<p>update-rent-short works!</p>
+<div class="container">
+    <div class="fixed-size">
+      <h2>Edit Rent</h2>
+      <form
+        #updateRentForm="ngForm"
+        (ngSubmit)="updateRentHandler(updateRentForm)"
+      >
+        <div class="create-rent-form">
+          <div class="input-group">
+            <label for="country">Country:</label>
+            <input
+              type="text"
+              id="country"
+              name="country"
+              value="{{ rent?.location?.country }}"
+              required
+              ngModel
+              #inputCountry="ngModel"
+            />
+            <label for="city">City:</label>
+            <input
+              type="text"
+              id="city"
+              name="city"
+              value="{{ rent?.location?.city }}"
+              required
+              ngModel
+              #inputCity="ngModel"
+            />
+          </div>
+          <div class="input-photos">
+            <!-- Add input type="file" -->
+            <!-- <input type="file" id="photos" name="photos" multiple> -->
+            <div class="photos">
+              <h3>Add Photos</h3>
+              <div class="main-photo">
+                <input
+                  type="text"
+                  id="cover"
+                  name="cover"
+                  value="{{ rent?.cover }}"
+                  required
+                  multiple
+                  ngModel
+                  #inputCover="ngModel"
+                />
+              </div>
+              <input
+                type="text"
+                id="photo1"
+                name="photo1"
+                placeholder="Photo 1"
+                value="{{rent?.photos?.[0] || ''}}"
+                multiple
+                ngModel
+                #inputPhoto1="ngModel"
+              />
+              <input
+                type="text"
+                id="photo2"
+                name="photo2"
+                placeholder="Photo 2"
+                value="{{rent?.photos?.[1] || ''}}"
+                multiple
+                ngModel
+                #inputPhoto2="ngModel"
+              />
+              <input
+                type="text"
+                id="photo3"
+                name="photo3"
+                placeholder="Photo 3"
+                value="{{rent?.photos?.[2] || ''}}"
+                multiple
+                ngModel
+                #inputPhoto3="ngModel"
+              />
+            </div>
+          </div>
+          <div class="input-group">
+            <label for="description">Description:</label>
+            <textarea
+              id="description"
+              name="description"
+              value="{{ rent?.description }}"
+              required
+              ngModel
+              #inputDescription="ngModel"
+            ></textarea>
+          </div>
+          <div class="input-group">
+            <label for="price">Price:</label>
+            <input
+              type="number"
+              id="price"
+              name="price"
+              value="{{ rent?.price }}"
+              required
+              ngModel
+              #inputPrice="ngModel"
+            />
+          </div>
+          <div class="input-options">
+            <h2>Options</h2>
+            <label
+              ><input
+                (click)="changeStateWifi()"
+                type="checkbox"
+                name="wifi"
+                [checked]="isCheckedWifi"
+                ngModel
+              />
+              Wifi</label
+            ><br />
+            <label
+              ><input
+                (click)="changeStateParking()"
+                type="checkbox"
+                name="parking"
+                [checked]="isCheckedParking"
+                ngModel
+              />
+              Parking</label
+            ><br />
+            <label
+              ><input
+                (click)="changeStateBreakfast()"
+                type="checkbox"
+                name="breakfast"
+                [checked]="isCheckedBreakfast"
+                ngModel
+              />
+              Breakfast</label
+            ><br />
+            <label
+              ><input
+                (click)="changeStatePets()"
+                type="checkbox"
+                name="pets"
+                [checked]="isCheckedPets"
+                ngModel
+              />
+              Pets Allowed</label
+            ><br />
+            <label
+              ><input
+                (click)="changeStateSmoking()"
+                type="checkbox"
+                name="smoking"
+                [checked]="isCheckedSmoking"
+                ngModel
+              />
+              Smoking Allowed</label
+            ><br />
+          </div>
+          <button>Modify Rent</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  

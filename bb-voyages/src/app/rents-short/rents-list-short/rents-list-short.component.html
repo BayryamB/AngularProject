@@ -28,6 +28,10 @@
                     <p>{{rent.price}} € night</p>
                 </div>
             </div>
+            <div *ngIf="rents.length < 1" class="no-rents">
+                <h1>No Rents</h1>
+                <p>No Rents Available</p>
+            </div>
         </div>
     </div>
 </div>
