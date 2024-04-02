@@ -1,16 +1,16 @@
 header{
-    background-image: url('../../../assets/header-bg.jpg');
+    background-image: url('../../../assets/mountains-1412683_1920.png');
     background-size: cover;
     background-position: center;
     color: rgb(221, 221, 221);
     font-family: 'Helvetica', sans-serif;
     padding: 0 50px;
+    box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.5);
 }
 
 .fixed-size {
     max-width: 1200px;
     margin: 0 auto;
-    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
     border-radius: 2em;
     padding: 1em;
 }
@@ -19,6 +19,11 @@ header{
     display: flex;
     justify-content: space-between;
     padding: 10px;
+}
+
+.navigation {
+    display: flex;
+    justify-content: space-between;
 }
 
 .logo {
@@ -37,7 +42,6 @@ header{
     cursor: pointer;
 }
 
-
 .login-register,
 .logout-profile {
     width: 150px;
@@ -45,9 +49,11 @@ header{
     border: 2px solid rgb(221, 221, 221);
     background-color: rgb(221, 221, 221);
     border-radius: 2em;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     align-items: center;
     text-align: center;
 }
+
 .auth .login-register,
 .logout-profile {
     display: flex;
@@ -66,13 +72,20 @@ header{
 }
 
 nav {
+    background: hsla(296, 30%, 80%, 1);
+
+    background: linear-gradient(90deg, hsla(296, 30%, 80%, 1) 0%, hsla(250, 28%, 71%, 1) 40%, hsla(235, 28%, 65%, 1) 100%);
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#FFDDD4", endColorstr="#7276B0", GradientType=1 );
+    max-width: 600px;
     display: flex;
     justify-content: space-between;
+    padding: 1em 0em;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+    border-radius: 1em;
 }
 
 nav ul {
     display: flex;
-    justify-content: space-between;
     list-style: none;
 }
 
@@ -82,7 +95,8 @@ nav ul li {
 
 nav ul li a {
     text-decoration: none;
-    color: rgb(221, 221, 221);
+    color: #2C2837;
+    font-size: 16px;
 }
 
 nav p {
