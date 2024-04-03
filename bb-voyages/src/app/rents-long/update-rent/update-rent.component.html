@@ -7,10 +7,10 @@
           <div class="location">
             <h3>Choose Location</h3>
             <label for="country">Country:</label>
-            <input type="text" id="country" name="country" value="{{ rent?.location?.country }}" required ngModel
+            <input type="text" id="country" name="country" value="{{ rent?.location?.country }}" ngModel
               #inputCountry="ngModel" />
             <label for="city">City:</label>
-            <input type="text" id="city" name="city" value="{{ rent?.location?.city }}" required ngModel
+            <input type="text" id="city" name="city" value="{{ rent?.location?.city }}" ngModel
               #inputCity="ngModel" />
           </div>
           
@@ -21,7 +21,7 @@
           <div class="photos">
             <h3>Add Photos</h3>
             <div class="main-photo">
-              <input type="text" id="cover" name="cover" value="{{ rent?.cover }}" required multiple ngModel
+              <input type="text" id="cover" name="cover" value="{{ rent?.cover }}" multiple ngModel
                 #inputCover="ngModel" />
             </div>
             <input type="text" id="photo1" name="photo1" placeholder="Photo 1" value="{{rent?.photos?.[0] || ''}}"
@@ -34,12 +34,12 @@
         </div>
         <div class="input-group">
           <label for="description">Description:</label>
-          <textarea id="description" name="description" value="{{ rent?.description }}" required ngModel
+          <textarea id="description" name="description" value="{{ rent?.description }}" ngModel
             #inputDescription="ngModel"></textarea>
         </div>
         <div class="input-group">
           <label for="price">Price:</label>
-          <input type="number" id="price" name="price" value="{{ rent?.price }}" required ngModel
+          <input type="number" id="price" name="price" value="{{ rent?.price }}" ngModel
             #inputPrice="ngModel" />
         </div>
         <div class="input-options">
@@ -58,7 +58,7 @@
               ngModel />
             Smoking Allowed</label><br />
         </div>
-        <div *ngIf="updateRentForm.invalid && (updateRentForm.dirty || updateRentForm.touched)" class="error-message">
+        <div *ngIf="updateRentForm.invalid " class="error-message">
           Please fill out all required fields.
       </div>
       <div [ngClass]="{'button-disabled': updateRentForm.invalid, 'button-enabled': !updateRentForm.invalid}">
