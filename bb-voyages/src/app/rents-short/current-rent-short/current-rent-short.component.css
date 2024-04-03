@@ -67,15 +67,15 @@
 }
 
 .fa-check {
-    color: rgb(0, 255, 0);
+    color: rgb(0, 255, 0, 0.7);
 }
 
 .fa-x {
-    color: rgb(255, 0, 0);
+    color: rgba(255, 0, 0, 0.7);
 }
 
 .likes i {
-    color: red;
+    color: rgba(255, 0, 0, 0.7);
 }
 
 .likes span {

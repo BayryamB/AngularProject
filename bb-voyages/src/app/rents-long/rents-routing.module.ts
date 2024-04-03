@@ -5,12 +5,13 @@ import { AddRentComponent } from './add-rent/add-rent.component';
 import { RentsListComponent } from './rents-list/rents-list.component';
 import { AuthActivate } from '../guards/auth.activate';
 import { UpdateRentComponent } from './update-rent/update-rent.component';
+import { CreateGuard } from '../guards/create.activate';
 
 const routes: Routes = [
   {
     path: 'add-rent',
     component: AddRentComponent,
-    canActivate: [AuthActivate],
+    canActivate: [CreateGuard],
   },
   { path: 'rents/edit/:id', component: UpdateRentComponent },
   { path: 'rents', component: RentsListComponent },

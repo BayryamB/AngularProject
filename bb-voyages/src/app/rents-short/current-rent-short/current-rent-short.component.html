@@ -18,7 +18,7 @@
                 <div class="info">
                     <div class="text">
                         <h3>Information</h3>
-                        <p>Posted on {{rent?.date?.endsWith(':00.000Z') ? rent?.date?.slice(0, 10) : rent?.date}}</p>
+                        <p>Posted on {{rent?.date | date:"MM/dd/yyyy"}}</p>
                         <p>{{rent?.price}} € night</p>
                         <p>{{rent?.description}}</p>
                     </div>

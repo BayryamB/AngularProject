@@ -34,7 +34,7 @@
 
 .click-card img{
     cursor: pointer;
-    max-width: 1200px;
+    width: 1200px;
     aspect-ratio: 3;
     border-radius: 0.5em;
     object-fit: cover;

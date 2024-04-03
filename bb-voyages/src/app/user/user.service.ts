@@ -67,10 +67,7 @@ export class UserService {
           return throwError(() => error);
         }),
         map((response) => {
-          console.log(response);
           if (this.user) {
-            console.log(this.user);
-
             this.user.userId = response.userId;
             localStorage.setItem(this.USER_KEY, JSON.stringify(this.user));
           }
