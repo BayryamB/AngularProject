@@ -49,6 +49,12 @@
                             <button (click)="updateRent()" >Edit</button>
                             <button (click)="deleteRent()" class="del">Delete</button>
                         </div>
+                        <div *ngIf="isLoggedIn && !isInWatchlist" class="watchlist">
+                            <button (click)="addToWatchlist()">Add to Favorites</button>
+                        </div>
+                        <div *ngIf="isLoggedIn && isInWatchlist" class="watchlist">
+                            <button (click)="addToWatchlist()">Remove from Favorites</button>
+                        </div>
                     </div>
                 </div>
             </div>

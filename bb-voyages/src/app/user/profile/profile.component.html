@@ -5,6 +5,20 @@
         <div class="profile-img">
           <img src="../../../assets/avatar.png" alt="Profile Image" />
         </div>
+       <div class="stats">
+        <div class="likes">
+          <p>Total Likes:{{likesList.length}}</p>
+        </div>
+        <div class="watchlist">
+          <p>Favorite Destinations:{{watchList.length}}</p>
+          <ul >
+            <li *ngFor="let item of rentsInWatchList">
+              <div class="rent">
+                <p>{{ item }}</p>
+              </div></li>
+          </ul>
+        </div>
+       </div>
         <div class="profile-details">
           <form action="" #profileForm="ngForm" (ngSubmit)="updateProfile(profileForm)">
             <div class="profile-name">

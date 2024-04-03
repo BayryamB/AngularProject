@@ -25,6 +25,8 @@ const userSchema = new mongoose.Schema({
   username: { type: String, unique: true },
   password: String,
   email: String,
+  watchlist: [String],
+  likes: [String],
 });
 const User = mongoose.model("User", userSchema);
 
@@ -216,6 +218,74 @@ app.put("/api/short/:id", async (req, res) => {
     res.status(200).json(rent);
   } catch (error) {
     res.status(500).json({ error: error.message });
+  }
+});
+
+// Add item to watchlist
+app.post("/api/users/watchlist/:id", async (req, res) => {
+  const { id } = req.params;
+  const { userId } = req.body;
+  try {
+    const user = await User.findByIdAndUpdate(
+      id,
+      { $addToSet: { watchlist: userId } },
+      { new: true }
+    );
+    res.json(user);
+  } catch (error) {
+    console.error("Error adding item to watchlist:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
+// Remove item from watchlist
+app.post("/api/users/unwatchlist/:id", async (req, res) => {
+  const { id } = req.params;
+  const { userId } = req.body;
+  try {
+    const user = await User.findByIdAndUpdate(
+      id,
+      { $pull: { watchlist: userId } },
+      { new: true }
+    );
+    res.json(user);
+  } catch (error) {
+    console.error("Error removing item from watchlist:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
+// Add likes to a user
+app.post("/api/users/like/:id", async (req, res) => {
+  const { id } = req.params;
+  const { userId } = req.body;
+  try {
+    const user = await User.findByIdAndUpdate(
+      id,
+      { $addToSet: { likes: userId } },
+      { new: true }
+    );
+    res.json(user);
+  } catch (error) {
+    console.error("Error liking item:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
+// Remove likes from a user
+app.post("/api/users/dislike/:id", async (req, res) => {
+  const { id } = req.params;
+  const { userId } = req.body; // Access the userId from the request body
+  try {
+    const user = await User.findByIdAndUpdate(
+      id,
+      { $pull: { likes: userId } },
+      { new: true }
+    );
+    res.json(user);
+  } catch (error) {
+    console.error("Error disliking item:", error);
+    res.status(500).json({ error: "Internal server error" });
   }
 });
 

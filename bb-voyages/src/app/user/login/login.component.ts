@@ -18,7 +18,6 @@ export class LoginComponent {
     const password = loginForm.value.password;
     loginForm.reset();
     this.userService.login(username, password).subscribe((response) => {
-      console.log(response);
       this.router.navigate(['/']);
     });
   }

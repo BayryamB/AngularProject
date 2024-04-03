@@ -17,6 +17,9 @@ export class ProfileComponent {
   newEmail = '';
   newUsername = '';
   isProfileUpdated: boolean = false;
+  watchList: string[] = [];
+  rentsInWatchList: string[] = [];
+  likesList: string[] = [];
   constructor(
     private service: UserService,
     private router: Router,
@@ -27,6 +30,26 @@ export class ProfileComponent {
         this.user = user;
         this.newEmail = user.email;
         this.newUsername = user.username;
+        this.watchList = user.watchlist;
+        this.likesList = user.likes;
+        if (user.watchlist.length > 0) {
+          try {
+            for (const id of this.watchList) {
+              const responseFromLongRent = this.api
+                .getSingleRent(id)
+                .subscribe((rent) => {
+                  this.rentsInWatchList?.push(rent.location.country);
+                });
+              const responseFromShortRent = this.api
+                .getSingleRentShort(id)
+                .subscribe((rent) => {
+                  this.rentsInWatchList?.push(rent.location.country);
+                });
+            }
+          } catch (error) {
+            console.log(error);
+          }
+        }
       });
     } catch (error) {
       this.router.navigate(['/login']);
