@@ -42,7 +42,7 @@ export class CurrentRentShortComponent {
             this.isOwner = true;
           }
           const user = this.api
-            .getUser(this.userService.userId!)
+            .getUser(this.userService?.userId || '')
             .subscribe((user) => {
               this.user = user;
               if (this.user?.watchlist?.includes(this.rent?._id!)) {
@@ -103,6 +103,7 @@ export class CurrentRentShortComponent {
       1
     );
     this.api.updateUser(this.userId!, this.user).subscribe(() => {
+      this.isInWatchlist = false;
       this.ngOnInit();
     });
   }

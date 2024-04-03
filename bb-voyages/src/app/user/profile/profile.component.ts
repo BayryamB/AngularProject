@@ -38,12 +38,16 @@ export class ProfileComponent {
               const responseFromLongRent = this.api
                 .getSingleRent(id)
                 .subscribe((rent) => {
-                  this.rentsInWatchList?.push(rent.location.country);
+                  if (rent) {
+                    this.rentsInWatchList?.push(rent.location.country);
+                  }
                 });
               const responseFromShortRent = this.api
                 .getSingleRentShort(id)
                 .subscribe((rent) => {
-                  this.rentsInWatchList?.push(rent.location.country);
+                  if (rent) {
+                    this.rentsInWatchList?.push(rent.location.country);
+                  }
                 });
             }
           } catch (error) {
